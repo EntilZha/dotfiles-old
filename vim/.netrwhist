@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/pedro/Documents/Code/go/src/github.com/EntilZha/chapelco-weather/angular/app/js/controllers'
+let g:netrw_dirhist_2='/Users/pedro/Documents/Code/go/src/github.com/EntilZha/chapelco-weather/angular/app'
+let g:netrw_dirhist_3='/Users/pedro/Documents/Code/go/src/github.com/EntilZha/chapelco-weather/angular/app/partials'
+let g:netrw_dirhist_4='/Users/pedro/Documents/Code/go/src/github.com/EntilZha/chapelco-weather/angular/app'
+let g:netrw_dirhist_5='/Users/pedro/Documents/Code/go/src/github.com/EntilZha/chapelco-weather/angular'
+let g:netrw_dirhist_6='/Users/pedro/Documents/Code/go/src/github.com/EntilZha/chapelco-weather'
+let g:netrw_dirhist_7='/Users/pedro/Documents/Code/go/src/code.google.com/r/skirodriguez-dbf/godbf'
