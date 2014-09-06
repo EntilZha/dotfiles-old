@@ -21,9 +21,16 @@ alias python="ipython"
 alias py="ipython"
 alias pyi="ipython -i"
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
-alias vim="mvim"
 alias known-rm="rm ~/.ssh/known_hosts"
 alias gocode="cd $GOPATH/src/github.com/EntilZha"
 alias avyvids="go run $GOPATH/src/github.com/EntilZha/local-fserver/main.go"
 alias sudo="sudo -E"
-alias svim="sudo -E mvim"
+gui_vim() {
+	if [[ $(uname) == 'Linux' ]]; then
+		gvim "$@"
+	else
+		mvim "$@"
+	fi
+}
+alias svim="sudo -E gui_vim"
+alias vim="gui_vim"
