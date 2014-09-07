@@ -76,9 +76,14 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 map <C-Tab> :bnext<cr>
 map <C-S-Tab> :bprevious<cr>
 map <F5> :bnext<cr>
+
+" Hotkey for closing a buffer
 map :bc :Bclose
+
+" Application for the color pickter
 let g:colorpicker_app = 'iTerm.app'
 
+" Open files that are not vim in their correct program
 augroup nonvim
    au!
    au BufRead *.png,*.jpg,*.pdf,*.gif,*.xls* sil exe "!open " . shellescape(expand("%:p")) | bd | let &ft=&ft
@@ -94,3 +99,8 @@ set shell=bash\ -i
 
 " Disable pandoc changing symbols in markdown
 let g:pandoc#syntax#conceal#use = 0
+
+" Don't let vim make a bell on entering
+set noerrorbells
+set novisualbell
+autocmd! GUIEnter * set vb t_vb=
