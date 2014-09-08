@@ -1,8 +1,36 @@
-" Kick off some plugins
-execute pathogen#infect()
+" Setup Vundle
+filetype off
+set nocompatible
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'mileszs/ack.vim'
+Plugin 'rbgrouleff/bclose.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
+Plugin 'bling/vim-airline'
+Plugin 'burnettk/vim-angular'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-fugitive'
+Plugin 'fatih/vim-go'
+Plugin 'pangloss/vim-javascript'
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'tpope/vim-rails'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'derekwyatt/vim-scala'
+
+" Vimscripts
+Plugin 'bufkill.vim'
+
+call vundle#end()
+
 syntax on
 filetype plugin indent on
-set nocompatible
 set encoding=utf-8
 set showcmd
 
@@ -45,10 +73,10 @@ set wildmode=list:longest
 
 " Auto open nerdtree and close when its the only thing left
 " autocmd vimenter * NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-map <C-n> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+map <C-n> :NERDTreeToggle<CR>
 
 " Start vim with file focused instead of nerdtree
 autocmd VimEnter * wincmd p
@@ -78,7 +106,7 @@ map <C-S-Tab> :bprevious<cr>
 map <F5> :bnext<cr>
 
 " Hotkey for closing a buffer
-map :bc :Bclose
+map <C-w> :Bclose<cr>
 
 " Application for the color pickter
 let g:colorpicker_app = 'iTerm.app'
@@ -94,8 +122,6 @@ augroup end
 
 " Force *.md files to be recognized as markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-" Fix problem with markdown browser viewer
-set shell=bash\ -i
 
 " Disable pandoc changing symbols in markdown
 let g:pandoc#syntax#conceal#use = 0
@@ -104,3 +130,11 @@ let g:pandoc#syntax#conceal#use = 0
 set noerrorbells
 set novisualbell
 autocmd! GUIEnter * set vb t_vb=
+
+" Unhighlight
+nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+" Highlight whitespaces at end of line not on current editing line
+autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
+autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
+highlight EOLWS ctermbg=blue guibg=#AAD7E6

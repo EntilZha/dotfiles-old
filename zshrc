@@ -46,7 +46,7 @@ ZSH_THEME="soliah"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew bundler rails cap gem pip web-search callvim)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -79,3 +79,5 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+#. /Users/pedro/.vim/bundle/powerline/powerline/bindings/zsh/powerline.zsh
