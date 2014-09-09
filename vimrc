@@ -108,9 +108,6 @@ map <F5> :bnext<cr>
 " Hotkey for closing a buffer
 map <C-w> :Bclose<cr>
 
-" Application for the color pickter
-let g:colorpicker_app = 'iTerm.app'
-
 " Open files that are not vim in their correct program
 augroup nonvim
    au!
@@ -138,3 +135,13 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
 autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
 highlight EOLWS ctermbg=blue guibg=#AAD7E6
+
+" Configure Pandoc to not fold so much
+let g:pandoc#folding#level = 4
+
+" Configure vim to use my pandoc-viewer code
+function! PandocViewer()
+	silent !clear
+	silent execute "!pandoc-viewer c " . split(expand('%:t'), ".md")[0]
+endfunction
+map <F6> :call PandocViewer()<cr>
