@@ -33,3 +33,13 @@ gui_vim() {
 }
 alias svim="sudo -E gui_vim"
 alias vim="gui_vim"
+markdown() {
+	file=$1
+	filename=$(basename "${file%%.*}")
+	pdf=".pdf"
+	md=".md"
+	md_filename=$filename$md
+	pdf_filename=$filename$pdf
+	vim $md_filename
+	open -a Skim $pdf_filename
+}

@@ -12,6 +12,8 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
+Plugin 'Lokaltog/powerline-fonts'
+" Plugin 'Lokaltog/powerline'
 Plugin 'bling/vim-airline'
 Plugin 'burnettk/vim-angular'
 Plugin 'tpope/vim-bundler'
@@ -23,6 +25,8 @@ Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'tpope/vim-rails'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'szw/vim-tags'
+Plugin 'mustache/vim-mustache-handlebars'
 
 " Vimscripts
 Plugin 'bufkill.vim'
@@ -60,7 +64,7 @@ set ignorecase
 set smartcase
 
 " Set my color scheme and preferred font
-set guifont=Anonymous\ Pro:h12
+set guifont=Anonymous\ Pro\ for\ Powerline:h12
 colorscheme molokai
 
 " Remap autocomplete to something more natural
@@ -76,7 +80,7 @@ set wildmode=list:longest
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-map <C-n> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 
 " Start vim with file focused instead of nerdtree
 autocmd VimEnter * wincmd p
@@ -97,16 +101,20 @@ autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " Enable list of buffers and show only filename
+" python from powerline.vim import setup as powerline_setup
+" python powerline_setup()
+" python del powerline_setup
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline_powerline_fonts = 1
+set laststatus=2
+set noshowmode
 
-" Enable ctrl-tab and ctrl-shift-tab to switch between buffers
-map <C-Tab> :bnext<cr>
-map <C-S-Tab> :bprevious<cr>
-map <F5> :bnext<cr>
+" Enable short cuts for switching buffers
+nnoremap <Leader>bn :bnext<cr>
+nnoremap <Leader>bp :bprevious<cr>
 
 " Hotkey for closing a buffer
-map <C-w> :Bclose<cr>
+nnoremap <Leader>w :Bclose<cr>
 
 " Open files that are not vim in their correct program
 augroup nonvim
@@ -128,9 +136,6 @@ set noerrorbells
 set novisualbell
 autocmd! GUIEnter * set vb t_vb=
 
-" Unhighlight
-nnoremap <silent> <C-l> :nohl<CR><C-l>
-
 " Highlight whitespaces at end of line not on current editing line
 autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
 autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
@@ -139,9 +144,13 @@ highlight EOLWS ctermbg=blue guibg=#AAD7E6
 " Configure Pandoc to not fold so much
 let g:pandoc#folding#level = 4
 
-" Configure vim to use my pandoc-viewer code
-function! PandocViewer()
-	silent !clear
-	silent execute "!pandoc-viewer c " . split(expand('%:t'), ".md")[0]
-endfunction
-map <F6> :call PandocViewer()<cr>
+" Convention for me is to map <Leader>c to whatever the related
+" compile function is in the langauge. This occurs in the ftplugin
+
+" Make it easy to open my vimrc
+nnoremap <Leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <Leader>sv :source $MYVIMRC<cr>
+
+" Set spell check for markdown
+autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd FileType gitcommit setlocal spell
