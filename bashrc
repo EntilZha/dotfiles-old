@@ -24,6 +24,8 @@ alias known-rm="rm ~/.ssh/known_hosts"
 alias gocode="cd $GOPATH/src/github.com/EntilZha"
 alias avyvids="go run $GOPATH/src/github.com/EntilZha/local-fserver/main.go"
 alias sudo="sudo -E"
+alias ee="cd ~/Code/ee126"
+alias isf="cd ~/Google\ Drive/School/ISF100D"
 gui_vim() {
 	if [[ $(uname) == 'Linux' ]]; then
 		gvim "$@"

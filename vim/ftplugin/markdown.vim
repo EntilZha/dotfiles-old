@@ -7,6 +7,6 @@ endfunction
 function! PandocCompile()
 	silent execute "w"
 	silent !clear
-	silent execute "!pandoc -V geometry:margin=1in " . expand('%:t') . " -o " . split(expand('%:t'), ".md")[0] . ".pdf"
+	silent execute "!pandoc -V geometry:margin=.75in " . expand('%:t') . " -o " . split(expand('%:t'), ".md")[0] . ".pdf"
 endfunction
 nnoremap <Leader>cc :call PandocCompile()<cr>

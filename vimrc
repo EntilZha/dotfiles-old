@@ -4,29 +4,35 @@ set nocompatible
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'mileszs/ack.vim'
-Plugin 'rbgrouleff/bclose.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'Raimondi/delimitMate'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
-Plugin 'Lokaltog/powerline-fonts'
-" Plugin 'Lokaltog/powerline'
-Plugin 'bling/vim-airline'
-Plugin 'burnettk/vim-angular'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-fugitive'
-Plugin 'fatih/vim-go'
-Plugin 'pangloss/vim-javascript'
-Plugin 'vim-pandoc/vim-pandoc'
-Plugin 'vim-pandoc/vim-pandoc-syntax'
-Plugin 'tpope/vim-rails'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'szw/vim-tags'
-Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'mileszs/ack.vim' " Access to Ack search
+Plugin 'rbgrouleff/bclose.vim' " Close buffers without closing window
+Plugin 'kien/ctrlp.vim' " Fuzzy finder search
+Plugin 'Raimondi/delimitMate' " Auto add pairing delimiters
+Plugin 'scrooloose/nerdcommenter' " Comment code easily
+Plugin 'scrooloose/nerdtree' " File navigation tree
+Plugin 'scrooloose/syntastic' " Syntax for code
+Plugin 'Lokaltog/powerline-fonts' " Fonts for powerline/airline
+Plugin 'bling/vim-airline' " Nice status bar
+Plugin 'burnettk/vim-angular' " Angular support
+Plugin 'tpope/vim-bundler' " Bundler support
+Plugin 'tpope/vim-fugitive' " Git support
+Plugin 'fatih/vim-go' " Golang Support
+Plugin 'pangloss/vim-javascript' " Javascript support
+Plugin 'vim-pandoc/vim-pandoc' " Pandoc support
+Plugin 'vim-pandoc/vim-pandoc-syntax' " Pandoc syntax support
+Plugin 'tpope/vim-rails' " Rails support
+Plugin 'vim-ruby/vim-ruby' " Ruby support
+Plugin 'derekwyatt/vim-scala' " Scala support
+Plugin 'szw/vim-tags' " ctags support
+Plugin 'mustache/vim-mustache-handlebars' " Handlebars support
+Plugin 'LaTeX-Box-Team/LaTeX-Box' " LaTeX support
+Plugin 'jlanzarotta/bufexplorer' " Better buffer explorer
+Plugin 'airblade/vim-gitgutter' " Git visual support
+Plugin 'rizzatti/dash.vim' " Dash support
+Plugin 'SirVer/ultisnips' " Snippets
+Plugin 'honza/vim-snippets' " Starter snippets
+Plugin 'Valloric/YouCompleteMe' " Tab autocompletion
 
 " Vimscripts
 Plugin 'bufkill.vim'
@@ -45,6 +51,9 @@ set number
 set autowrite
 set ruler
 set nowrap
+
+" Remap leader
+let mapleader=","
 
 " Enable code folding
 set foldenable
@@ -114,7 +123,7 @@ nnoremap <Leader>bn :bnext<cr>
 nnoremap <Leader>bp :bprevious<cr>
 
 " Hotkey for closing a buffer
-nnoremap <Leader>w :Bclose<cr>
+nnoremap <Leader>bc :Bclose<cr>
 
 " Open files that are not vim in their correct program
 augroup nonvim
@@ -154,3 +163,16 @@ nnoremap <Leader>sv :source $MYVIMRC<cr>
 " Set spell check for markdown
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd FileType gitcommit setlocal spell
+
+" Configure LaTeX-Box
+let g:LatexBox_latexmk_preview_continuously = 1
+let g:LatexBox_quickfix = 4
+
+" Unhighlight
+nnoremap <Leader>nh :nohl<cr>
+
+" Configure Ultisnips to play nice with YCM
+let g:UltiSnipsExpandTrigger = '<C-s>'
+let g:UltiSnipsJumpForwardTrigger = '<Tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
+"let g:UltiSnipsListSnippets = '<c-m>'
