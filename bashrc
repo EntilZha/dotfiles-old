@@ -26,6 +26,7 @@ alias avyvids="go run $GOPATH/src/github.com/EntilZha/local-fserver/main.go"
 alias sudo="sudo -E"
 alias ee="cd ~/Code/ee126"
 alias isf="cd ~/Google\ Drive/School/ISF100D"
+alias skim="open -a Skim"
 gui_vim() {
 	if [[ $(uname) == 'Linux' ]]; then
 		gvim "$@"

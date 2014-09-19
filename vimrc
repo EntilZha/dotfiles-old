@@ -4,38 +4,50 @@ set nocompatible
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" Framework Vim
 Plugin 'gmarik/Vundle.vim'
+
+" Search, File Directories...
 Plugin 'mileszs/ack.vim' " Access to Ack search
-Plugin 'rbgrouleff/bclose.vim' " Close buffers without closing window
 Plugin 'kien/ctrlp.vim' " Fuzzy finder search
-Plugin 'Raimondi/delimitMate' " Auto add pairing delimiters
-Plugin 'scrooloose/nerdcommenter' " Comment code easily
 Plugin 'scrooloose/nerdtree' " File navigation tree
+
+" Buffer plugins
+Plugin 'rbgrouleff/bclose.vim' " Close buffers without closing window
+Plugin 'bufkill.vim'
+Plugin 'jlanzarotta/bufexplorer' " Better buffer explorer
+
+" Language Support
 Plugin 'scrooloose/syntastic' " Syntax for code
-Plugin 'Lokaltog/powerline-fonts' " Fonts for powerline/airline
-Plugin 'bling/vim-airline' " Nice status bar
 Plugin 'burnettk/vim-angular' " Angular support
 Plugin 'tpope/vim-bundler' " Bundler support
 Plugin 'tpope/vim-fugitive' " Git support
 Plugin 'fatih/vim-go' " Golang Support
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
 Plugin 'pangloss/vim-javascript' " Javascript support
 Plugin 'vim-pandoc/vim-pandoc' " Pandoc support
 Plugin 'vim-pandoc/vim-pandoc-syntax' " Pandoc syntax support
 Plugin 'tpope/vim-rails' " Rails support
 Plugin 'vim-ruby/vim-ruby' " Ruby support
-Plugin 'derekwyatt/vim-scala' " Scala support
-Plugin 'szw/vim-tags' " ctags support
 Plugin 'mustache/vim-mustache-handlebars' " Handlebars support
 Plugin 'LaTeX-Box-Team/LaTeX-Box' " LaTeX support
-Plugin 'jlanzarotta/bufexplorer' " Better buffer explorer
+Plugin 'derekwyatt/vim-scala' " Scala support
+
+" Stylistic
+Plugin 'Lokaltog/powerline-fonts' " Fonts for powerline/airline
+Plugin 'bling/vim-airline' " Nice status bar
 Plugin 'airblade/vim-gitgutter' " Git visual support
-Plugin 'rizzatti/dash.vim' " Dash support
+
+" Auto completion and snippets
+Plugin 'szw/vim-tags' " ctags support
 Plugin 'SirVer/ultisnips' " Snippets
 Plugin 'honza/vim-snippets' " Starter snippets
 Plugin 'Valloric/YouCompleteMe' " Tab autocompletion
 
-" Vimscripts
-Plugin 'bufkill.vim'
+" Utility
+Plugin 'scrooloose/nerdcommenter' " Comment code easily
+Plugin 'Raimondi/delimitMate' " Auto add pairing delimiters
+Plugin 'rizzatti/dash.vim' " Dash support
 
 call vundle#end()
 
@@ -80,6 +92,9 @@ colorscheme molokai
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
 
+" Set preview/scratch off
+set completeopt=menu
+
 " Let me have command autocomplete like in bash
 set wildmenu
 set wildmode=list:longest
@@ -121,9 +136,12 @@ set noshowmode
 " Enable short cuts for switching buffers
 nnoremap <Leader>bn :bnext<cr>
 nnoremap <Leader>bp :bprevious<cr>
+nnoremap <C-Tab> :bnext<cr>
+nnoremap <C-S-Tab> :bprevious<cr>
 
 " Hotkey for closing a buffer
 nnoremap <Leader>bc :Bclose<cr>
+
 
 " Open files that are not vim in their correct program
 augroup nonvim
