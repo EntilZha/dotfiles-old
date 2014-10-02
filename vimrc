@@ -84,6 +84,10 @@ set incsearch
 set ignorecase
 set smartcase
 
+" Disable backup and swapfile
+set noswapfile
+set nobackup
+
 " Set my color scheme and preferred font
 set guifont=Anonymous\ Pro\ for\ Powerline:h12
 colorscheme molokai
@@ -194,3 +198,9 @@ let g:UltiSnipsExpandTrigger = '<C-s>'
 let g:UltiSnipsJumpForwardTrigger = '<Tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
 "let g:UltiSnipsListSnippets = '<c-m>'
+
+" Configure LaTeX-Box
+let g:LatexBox_latexmk_options = "-pvc -pdfps"
+
+" vim-go set auto importer
+let g:go_fmt_command = "goimports"

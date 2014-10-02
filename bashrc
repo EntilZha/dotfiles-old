@@ -4,8 +4,10 @@ SPARK_HOME=/Users/pedro/spark-0.9.0
 PATH=$HOME/.rvm/bin:$PATH:$HOME/Utilities/Appify:/Applications/MATLAB_R2013a_Student.app/bin:"/Applications/Android Studio.app/sdk/platform-tools"
 PATH=$PATH:$SCALA_HOME/bin:$HOME/Utilities
 export GOPATH=$HOME/Code/go
+unset GOROOT
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
+source ~/.secrets
 function google() { open "https://www.google.com/search?q=$@"; }
 alias hide_hidden="defaults write com.apple.finder AppleShowAllFiles FALSE;killall Finder"
 alias show_hidden="defaults write com.apple.finder AppleShowAllFiles TRUE;killall Finder"
