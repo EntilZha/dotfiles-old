@@ -32,6 +32,7 @@ Plugin 'vim-ruby/vim-ruby' " Ruby support
 Plugin 'mustache/vim-mustache-handlebars' " Handlebars support
 Plugin 'LaTeX-Box-Team/LaTeX-Box' " LaTeX support
 Plugin 'derekwyatt/vim-scala' " Scala support
+Plugin 'vim-scripts/nginx.vim' "Nginx support
 
 " Stylistic
 Plugin 'Lokaltog/powerline-fonts' " Fonts for powerline/airline
@@ -43,6 +44,7 @@ Plugin 'szw/vim-tags' " ctags support
 Plugin 'SirVer/ultisnips' " Snippets
 Plugin 'honza/vim-snippets' " Starter snippets
 Plugin 'Valloric/YouCompleteMe' " Tab autocompletion
+Plugin 'terryma/vim-multiple-cursors' " Multiple cursors
 
 " Utility
 Plugin 'scrooloose/nerdcommenter' " Comment code easily
@@ -56,13 +58,15 @@ filetype plugin indent on
 set encoding=utf-8
 set showcmd
 
-" Show line numbers by default
+" Configure line number stuff
 set number
+set relativenumber
+set cursorline
+set scrolloff=3
 
 " Write out old file while switching contexts
 set autowrite
 set ruler
-set nowrap
 
 " Remap leader
 let mapleader=","
@@ -88,6 +92,10 @@ set smartcase
 set noswapfile
 set nobackup
 
+" Set gui options
+set guioptions-=r
+set guioptions-=L
+
 " Set my color scheme and preferred font
 set guifont=Anonymous\ Pro\ for\ Powerline:h12
 colorscheme molokai
@@ -103,12 +111,15 @@ set completeopt=menu
 set wildmenu
 set wildmode=list:longest
 
+" Write as sudo when needed
+cmap w!! w !sudo tee > /dev/null %
+
 " Auto open nerdtree and close when its the only thing left
 " autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
 
 " Start vim with file focused instead of nerdtree
 autocmd VimEnter * wincmd p
@@ -119,6 +130,10 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Treat long lines as break lines
+map j gj
+map k gk
 
 " Set splits to be natural
 set splitbelow
@@ -191,7 +206,8 @@ let g:LatexBox_latexmk_preview_continuously = 1
 let g:LatexBox_quickfix = 4
 
 " Unhighlight
-nnoremap <Leader>nh :nohl<cr>
+nnoremap <Leader>hh :nohl<cr>
+nnoremap <Leader>hn :hl<cr>
 
 " Configure Ultisnips to play nice with YCM
 let g:UltiSnipsExpandTrigger = '<C-s>'
@@ -204,3 +220,12 @@ let g:LatexBox_latexmk_options = "-pvc -pdfps"
 
 " vim-go set auto importer
 let g:go_fmt_command = "goimports"
+
+" Fix vim multiple cursors
+function! Multiple_cursors_before()
+  let g:ycm_auto_trigger = 0
+endfunction
+
+function! Multiple_cursors_after()
+	let g:ycm_auto_trigger = 1
+endfunction

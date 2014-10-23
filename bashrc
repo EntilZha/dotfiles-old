@@ -1,6 +1,7 @@
 SCALA_HOME=/usr/local/share/scala-2.11.0
 EDITOR=mvim
 SPARK_HOME=/Users/pedro/spark-0.9.0
+PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 PATH=$HOME/.rvm/bin:$PATH:$HOME/Utilities/Appify:/Applications/MATLAB_R2013a_Student.app/bin:"/Applications/Android Studio.app/sdk/platform-tools"
 PATH=$PATH:$SCALA_HOME/bin:$HOME/Utilities
 export GOPATH=$HOME/Code/go
@@ -19,6 +20,7 @@ alias h="cd ~"
 alias hsearch="history | grep"
 alias snowgeek="cd ~/Documents/Code/snowgeek/"
 alias code="cd ~/Documents/Code"
+alias snowgeek3="cd ~/Documents/Code/go/src/bitbucket.org/pedrorodriguez/snowgeek3"
 alias py="ipython"
 alias pyi="ipython -i"
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
