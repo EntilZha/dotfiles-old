@@ -50,6 +50,7 @@ Plugin 'terryma/vim-multiple-cursors' " Multiple cursors
 Plugin 'scrooloose/nerdcommenter' " Comment code easily
 Plugin 'Raimondi/delimitMate' " Auto add pairing delimiters
 Plugin 'rizzatti/dash.vim' " Dash support
+Plugin 'jeffkreeftmeijer/vim-numbertoggle' " Switch line numbering in cmd vs insert mode
 
 call vundle#end()
 
