@@ -2,11 +2,12 @@ SCALA_HOME=/usr/local/share/scala-2.11.0
 EDITOR=mvim
 PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 PATH=$HOME/.rvm/bin:$PATH:$HOME/Utilities/Appify:/Applications/MATLAB_R2013a_Student.app/bin:"/Applications/Android Studio.app/sdk/platform-tools"
-PATH=$PATH:$SCALA_HOME/bin:$HOME/Utilities
+PATH=$PATH:$SCALA_HOME/bin:$HOME/Utilities:$HOME/Utilities/activator-1.2.12
 export GOPATH=$HOME/Code/go
 unset GOROOT
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export SPARK_HOME=$HOME/Code/spark
 source ~/.secrets
 function google() { open "https://www.google.com/search?q=$@"; }
 alias hide_hidden="defaults write com.apple.finder AppleShowAllFiles FALSE;killall Finder"
