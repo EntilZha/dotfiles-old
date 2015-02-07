@@ -8,6 +8,9 @@ unset GOROOT
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export SPARK_HOME=$HOME/Code/spark
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=/Users/pedro/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
 source ~/.secrets
 function google() { open "https://www.google.com/search?q=$@"; }
 alias hide_hidden="defaults write com.apple.finder AppleShowAllFiles FALSE;killall Finder"
@@ -50,3 +53,4 @@ markdown() {
 	vim $md_filename
 	open -a Skim $pdf_filename
 }
+export PATH=/usr/local/sbin:$PATH
