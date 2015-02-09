@@ -44,7 +44,6 @@ Plugin 'szw/vim-tags' " ctags support
 Plugin 'SirVer/ultisnips' " Snippets
 Plugin 'honza/vim-snippets' " Starter snippets
 Plugin 'Valloric/YouCompleteMe' " Tab autocompletion
-Plugin 'terryma/vim-multiple-cursors' " Multiple cursors
 
 " Utility
 Plugin 'scrooloose/nerdcommenter' " Comment code easily
@@ -120,7 +119,7 @@ cmap w!! w !sudo tee > /dev/null %
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <C-N> :NERDTreeToggle<CR>
 
 " Start vim with file focused instead of nerdtree
 autocmd VimEnter * wincmd p
@@ -221,12 +220,3 @@ let g:LatexBox_latexmk_options = "-pvc -pdfps"
 
 " vim-go set auto importer
 let g:go_fmt_command = "goimports"
-
-" Fix vim multiple cursors
-function! Multiple_cursors_before()
-  let g:ycm_auto_trigger = 0
-endfunction
-
-function! Multiple_cursors_after()
-	let g:ycm_auto_trigger = 1
-endfunction
