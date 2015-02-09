@@ -2,14 +2,20 @@ SCALA_HOME=/usr/local/share/scala-2.11.0
 EDITOR=mvim
 
 export GOPATH=$HOME/Code/go
+unset GOROOT
 export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 export PATH=$PATH:$GOPATH/bin
-export CLASSPATH=$CLASSPATH:~/Documents/Java-Packages/java-aws-mturk-1.6.2/lib:~/Documents/Java-Packages/java-aws-mturk-1.6.2/lib/third-party
-export DOCKER_HOST=tcp://192.168.59.103:2376
-export DOCKER_CERT_PATH=/Users/prodriguez/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
+
+export CLASSPATH=$CLASSPATH:~/Documents/Java-Packages/java-aws-mturk-1.6.2/lib:~/Documents/Java-Packages/java-aws-mturk-1.6.2/lib/third-party
+
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=$HOME/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
+
+
 export SPARK_HOME=$HOME/Code/spark
+
 source ~/.secrets
 
 function google() { open "https://www.google.com/search?q=$@"; }
