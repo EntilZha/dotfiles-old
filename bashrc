@@ -8,7 +8,8 @@ export CLASSPATH=$CLASSPATH:~/Documents/Java-Packages/java-aws-mturk-1.6.2/lib:~
 export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=/Users/prodriguez/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
-
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export SPARK_HOME=$HOME/Code/spark
 source ~/.secrets
 
 function google() { open "https://www.google.com/search?q=$@"; }
@@ -47,3 +48,4 @@ markdown() {
 	vim $md_filename
 	open -a Skim $pdf_filename
 }
+export PATH=/usr/local/sbin:$PATH
