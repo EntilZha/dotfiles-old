@@ -221,3 +221,5 @@ let g:LatexBox_latexmk_options = "-pvc -pdfps"
 
 " vim-go set auto importer
 let g:go_fmt_command = "goimports"
+
+let g:NumberToggleTrigger = "<F2>"
