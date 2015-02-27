@@ -34,6 +34,7 @@ Plugin 'LaTeX-Box-Team/LaTeX-Box' " LaTeX support
 Plugin 'derekwyatt/vim-scala' " Scala support
 Plugin 'vim-scripts/nginx.vim' "Nginx support
 Plugin 'ekalinin/Dockerfile.vim' "Dockerfile support
+Plugin 'elzr/vim-json' "Json support
 
 " Stylistic
 Plugin 'Lokaltog/powerline-fonts' " Fonts for powerline/airline
