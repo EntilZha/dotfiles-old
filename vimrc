@@ -35,6 +35,8 @@ Plugin 'derekwyatt/vim-scala' " Scala support
 Plugin 'vim-scripts/nginx.vim' "Nginx support
 Plugin 'ekalinin/Dockerfile.vim' "Dockerfile support
 Plugin 'elzr/vim-json' "Json support
+Plugin 'vim-scripts/SQLComplete.vim' "SQL Support
+
 
 " Stylistic
 Plugin 'Lokaltog/powerline-fonts' " Fonts for powerline/airline
