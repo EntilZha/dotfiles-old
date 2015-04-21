@@ -46,7 +46,7 @@ ZSH_THEME="soliah"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(gitfast, brew, docker, sudo)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -81,11 +81,3 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 #. /Users/pedro/.vim/bundle/powerline/powerline/bindings/zsh/powerline.zsh
-function zle-line-init zle-keymap-select {
-    RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
-    RPS2=$RPS1
-    zle reset-prompt
-}
-
-zle -N zle-line-init
-zle -N zle-keymap-select
