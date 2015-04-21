@@ -6,7 +6,7 @@ unset GOROOT
 export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
-export PYTHONPATH=$PYTHONPATH:~/Code/datascience-crowdsourcing/python
+export PYTHONPATH=$PYTHONPATH:~/Code/datascience-crowdsourcing/python:/usr/local/lib/python2.7/site-packages/django
 
 export CLASSPATH=$CLASSPATH:~/Documents/Java-Packages/java-aws-mturk-1.6.2/lib:~/Documents/Java-Packages/java-aws-mturk-1.6.2/lib/third-party
 
@@ -35,6 +35,8 @@ alias sudo="sudo -E"
 alias skim="open -a Skim"
 alias pycharm="/Applications/PyCharm\ CE.app/Contents/MacOS/pycharm"
 
+alias ds1dev="ssh prodriguez@datascience1dev.sv2.trulia.com"
+
 gui_vim() {
 	if [[ $(uname) == 'Linux' ]]; then
 		gvim "$@"
@@ -44,6 +46,7 @@ gui_vim() {
 }
 
 alias svim="sudo -E gui_vim"
+alias tvim="gui_vim"
 alias vim="gui_vim"
 
 markdown() {
