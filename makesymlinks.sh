@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc vim zshrc oh-my-zsh bash_profile oh-my-zsh profile sbtconfig zlogin zsh-update gitignore_global pylintrc tmux.conf"
+files="bashrc vimrc vim zshrc oh-my-zsh bash_profile oh-my-zsh profile sbtconfig zlogin zsh-update gitignore_global pylintrc tmux.conf adio.tmuxcolors adio.itermcolors"
 
 ##########
 
