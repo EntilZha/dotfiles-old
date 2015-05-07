@@ -34,6 +34,7 @@ alias known-rm="rm ~/.ssh/known_hosts"
 alias sudo="sudo -E"
 alias skim="open -a Skim"
 alias pycharm="/Applications/PyCharm\ CE.app/Contents/MacOS/pycharm"
+alias gatling="~/Code/gatling-charts-highcharts-bundle-2.1.5/bin/gatling.sh"
 
 alias ds1dev="ssh prodriguez@datascience1dev.sv2.trulia.com"
 
