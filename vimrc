@@ -8,7 +8,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Search, File Directories...
-Plugin 'mileszs/ack.vim' " Access to Ack search
 Plugin 'kien/ctrlp.vim' " Fuzzy finder search
 Plugin 'scrooloose/nerdtree' " File navigation tree
 
@@ -19,21 +18,15 @@ Plugin 'jlanzarotta/bufexplorer' " Better buffer explorer
 
 " Language Support
 Plugin 'scrooloose/syntastic' " Syntax for code
-Plugin 'burnettk/vim-angular' " Angular support
-Plugin 'tpope/vim-bundler' " Bundler support
-Plugin 'tpope/vim-fugitive' " Git support
-Plugin 'fatih/vim-go' " Golang Support
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
 Plugin 'pangloss/vim-javascript' " Javascript support
 Plugin 'vim-pandoc/vim-pandoc' " Pandoc support
 Plugin 'vim-pandoc/vim-pandoc-syntax' " Pandoc syntax support
-Plugin 'tpope/vim-rails' " Rails support
-Plugin 'vim-ruby/vim-ruby' " Ruby support
-Plugin 'mustache/vim-mustache-handlebars' " Handlebars support
 Plugin 'LaTeX-Box-Team/LaTeX-Box' " LaTeX support
-Plugin 'derekwyatt/vim-scala' " Scala support
 Plugin 'vim-scripts/nginx.vim' "Nginx support
 Plugin 'ekalinin/Dockerfile.vim' "Dockerfile support
+Plugin 'elzr/vim-json' "Json support
+Plugin 'vim-scripts/SQLComplete.vim' "SQL Support
+
 
 " Stylistic
 Plugin 'Lokaltog/powerline-fonts' " Fonts for powerline/airline
@@ -42,14 +35,11 @@ Plugin 'airblade/vim-gitgutter' " Git visual support
 
 " Auto completion and snippets
 Plugin 'szw/vim-tags' " ctags support
-Plugin 'SirVer/ultisnips' " Snippets
-Plugin 'honza/vim-snippets' " Starter snippets
 Plugin 'Valloric/YouCompleteMe' " Tab autocompletion
 
 " Utility
 Plugin 'scrooloose/nerdcommenter' " Comment code easily
 Plugin 'Raimondi/delimitMate' " Auto add pairing delimiters
-Plugin 'rizzatti/dash.vim' " Dash support
 Plugin 'jeffkreeftmeijer/vim-numbertoggle' " Switch line numbering in cmd vs insert mode
 
 call vundle#end()
@@ -210,16 +200,6 @@ let g:LatexBox_quickfix = 4
 nnoremap <Leader>hh :nohl<cr>
 nnoremap <Leader>hn :hl<cr>
 
-" Configure Ultisnips to play nice with YCM
-let g:UltiSnipsExpandTrigger = '<C-s>'
-let g:UltiSnipsJumpForwardTrigger = '<Tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
-"let g:UltiSnipsListSnippets = '<c-m>'
-
 " Configure LaTeX-Box
 let g:LatexBox_latexmk_options = "-pvc -pdfps"
 
-" vim-go set auto importer
-let g:go_fmt_command = "goimports"
-
-let g:NumberToggleTrigger = "<F2>"

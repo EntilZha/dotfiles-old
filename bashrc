@@ -6,6 +6,7 @@ unset GOROOT
 export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export PYTHONPATH=$PYTHONPATH:~/Code/datascience-crowdsourcing/python:/usr/local/lib/python2.7/site-packages/django
 
 export CLASSPATH=$CLASSPATH:~/Documents/Java-Packages/java-aws-mturk-1.6.2/lib:~/Documents/Java-Packages/java-aws-mturk-1.6.2/lib/third-party
 
@@ -31,6 +32,10 @@ alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias known-rm="rm ~/.ssh/known_hosts"
 alias sudo="sudo -E"
 alias skim="open -a Skim"
+alias pycharm="/Applications/PyCharm\ CE.app/Contents/MacOS/pycharm"
+alias gatling="~/Code/gatling-charts-highcharts-bundle-2.1.5/bin/gatling.sh"
+
+alias ds1dev="ssh prodriguez@datascience1dev.sv2.trulia.com"
 
 gui_vim() {
 	if [[ $(uname) == 'Linux' ]]; then
@@ -41,7 +46,7 @@ gui_vim() {
 }
 
 alias svim="sudo -E gui_vim"
-alias vim="gui_vim"
+alias tvim="gui_vim"
 
 markdown() {
 	file=$1
