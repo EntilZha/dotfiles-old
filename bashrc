@@ -47,6 +47,7 @@ gui_vim() {
 
 alias svim="sudo -E gui_vim"
 alias tvim="gui_vim"
+alias vim="gui_vim"
 
 markdown() {
 	file=$1
