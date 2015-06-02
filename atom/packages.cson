@@ -1,0 +1,16 @@
+packages: [
+  "atom-beautify"
+  "autocomplete-plus-python-jedi"
+  "ex-mode"
+  "highlight-selected"
+  "language-docker"
+  "linter"
+  "linter-pylint"
+  "merge-conflicts"
+  "minimap"
+  "monokai"
+  "package-sync"
+  "script"
+  "term2"
+  "vim-mode"
+]
