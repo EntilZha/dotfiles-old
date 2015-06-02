@@ -35,7 +35,7 @@ Plugin 'airblade/vim-gitgutter' " Git visual support
 
 " Auto completion and snippets
 Plugin 'szw/vim-tags' " ctags support
-"Plugin 'Valloric/YouCompleteMe' " Tab autocompletion
+Plugin 'Valloric/YouCompleteMe' " Tab autocompletion
 
 " Utility
 Plugin 'scrooloose/nerdcommenter' " Comment code easily
@@ -91,6 +91,10 @@ set guioptions-=L
 " Set my color scheme and preferred font
 set guifont=Anonymous\ Pro\ for\ Powerline:h12
 colorscheme molokai
+
+" Configure python checker
+let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_pylint_args = '--rcfile=~/.pylintrc' 
 
 " Remap autocomplete to something more natural
 inoremap <C-Space> <C-x><C-o>
