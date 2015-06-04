@@ -3,4 +3,7 @@ zsh-update
 atom/packages
 atom/.apm
 atom/.gitignore
+atom/storage
+atom/compile-cache
+atom/.node-gyp
 .DS_Store

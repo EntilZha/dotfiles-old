@@ -44,6 +44,12 @@
     fileBlacklist: [
       "*.md"
     ]
+  "tool-bar":
+    position: "Left"
+  "merge-conflicts":
+    {}
+  "highlight-selected":
+    {}
 ".console.python.text":
   editor:
     preferredLineLength: 100
@@ -53,6 +59,9 @@
     preferredLineLength: 100
     tabLength: 4
 ".python.regexp.source":
+  editor:
+    preferredLineLength: 100
+".dockerfile.source":
   editor:
     preferredLineLength: 100
 ".python.source":
