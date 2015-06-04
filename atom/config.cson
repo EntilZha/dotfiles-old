@@ -1,0 +1,46 @@
+"*":
+  "exception-reporting":
+    userId: "ff16a854-9245-e5f5-f583-8f8d80213bac"
+  welcome:
+    showOnStartup: false
+  core:
+    themes: [
+      "one-dark-ui"
+      "monokai"
+    ]
+  editor:
+    invisibles:
+      {}
+    fontSize: 12
+    fontFamily: "Anonymous Pro"
+    preferredLineLength: 100
+    tabLength: 4
+  linter:
+    subtleLinterErrors: [
+      "pylint"
+    ]
+    statusBar: "Show all errors"
+    lintOnChange: false
+  term2:
+    {}
+  "linter-pylint":
+    {}
+  "atom-beautify":
+    _analyticsUserId: "8efd8466-162a-424a-8e32-50de7c7fd67a"
+  "autocomplete-python":
+    {}
+".console.python.text":
+  editor:
+    preferredLineLength: 100
+    tabLength: 4
+".python.text.traceback":
+  editor:
+    preferredLineLength: 100
+    tabLength: 4
+".python.regexp.source":
+  editor:
+    preferredLineLength: 100
+".python.source":
+  editor:
+    preferredLineLength: 100
+    softWrapAtPreferredLineLength: true

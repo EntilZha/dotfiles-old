@@ -54,6 +54,7 @@ set number
 set relativenumber
 set cursorline
 set scrolloff=3
+let g:UseNumberToggleTrigger = 0
 
 " Write out old file while switching contexts
 set autowrite
@@ -91,6 +92,10 @@ set guioptions-=L
 set guifont=Anonymous\ Pro\ for\ Powerline:h12
 colorscheme molokai
 
+" Configure python checker
+let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_pylint_args = '--rcfile=~/.pylintrc' 
+
 " Remap autocomplete to something more natural
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
@@ -104,17 +109,6 @@ set wildmode=list:longest
 
 " Write as sudo when needed
 cmap w!! w !sudo tee > /dev/null %
-
-" Auto open nerdtree and close when its the only thing left
-" autocmd vimenter * NERDTree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-nnoremap <C-N> :NERDTreeToggle<CR>
-
-" Start vim with file focused instead of nerdtree
-autocmd VimEnter * wincmd p
-autocmd VimEnter * if (line('$') == 1 && getline(1) == '') | wincmd p | endif
 
 " Remap pane switching shortcuts
 nnoremap <C-J> <C-W><C-J>
@@ -202,4 +196,15 @@ nnoremap <Leader>hn :hl<cr>
 
 " Configure LaTeX-Box
 let g:LatexBox_latexmk_options = "-pvc -pdfps"
+
+" Auto open nerdtree and close when its the only thing left
+" autocmd vimenter * NERDTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+nnoremap <C-N> :NERDTreeToggle<CR>
+
+" Start vim with file focused instead of nerdtree
+autocmd VimEnter * wincmd p
+autocmd VimEnter * if (line('$') == 1 && getline(1) == '') | wincmd p | endif
 

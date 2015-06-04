@@ -1,2 +1,5 @@
 vim/bundle
 zsh-update
+atom/packages
+atom/.apm
+atom/.gitignore

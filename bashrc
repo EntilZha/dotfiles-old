@@ -6,8 +6,7 @@ unset GOROOT
 export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
-export PYTHONPATH=$PYTHONPATH:~/Code/datascience-crowdsourcing/python:/usr/local/lib/python2.7/site-packages/django
-
+export PYTHONPATH=$PYTHONPATH:~/Code/datascience-crowdsourcing/python
 export CLASSPATH=$CLASSPATH:~/Documents/Java-Packages/java-aws-mturk-1.6.2/lib:~/Documents/Java-Packages/java-aws-mturk-1.6.2/lib/third-party
 
 export DOCKER_HOST=tcp://192.168.59.103:2376
@@ -47,6 +46,7 @@ gui_vim() {
 
 alias svim="sudo -E gui_vim"
 alias tvim="gui_vim"
+alias vim="gui_vim"
 
 markdown() {
 	file=$1
