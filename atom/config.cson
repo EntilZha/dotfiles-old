@@ -29,6 +29,14 @@
     _analyticsUserId: "8efd8466-162a-424a-8e32-50de7c7fd67a"
   "autocomplete-python":
     {}
+  "tool-bar":
+    position: "Left"
+  "merge-conflicts":
+    {}
+  "highlight-selected":
+    {}
+  minimap:
+    {}
 ".console.python.text":
   editor:
     preferredLineLength: 100
@@ -38,6 +46,9 @@
     preferredLineLength: 100
     tabLength: 4
 ".python.regexp.source":
+  editor:
+    preferredLineLength: 100
+".dockerfile.source":
   editor:
     preferredLineLength: 100
 ".python.source":

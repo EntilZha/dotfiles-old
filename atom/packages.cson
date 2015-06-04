@@ -12,5 +12,7 @@ packages: [
   "package-sync"
   "script"
   "term2"
+  "tool-bar"
+  "tool-bar-main"
   "vim-mode"
 ]
