@@ -8,6 +8,15 @@
       "one-dark-ui"
       "monokai"
     ]
+    ignoredNames: [
+      ".git"
+      ".hg"
+      ".svn"
+      ".DS_Store"
+      "Thumbs.db"
+      "*.pyc"
+      ".idea"
+    ]
   editor:
     invisibles:
       {}
@@ -29,6 +38,12 @@
     _analyticsUserId: "8efd8466-162a-424a-8e32-50de7c7fd67a"
   "autocomplete-python":
     {}
+  "tree-view":
+    hideIgnoredNames: true
+  "autocomplete-plus":
+    fileBlacklist: [
+      "*.md"
+    ]
 ".console.python.text":
   editor:
     preferredLineLength: 100

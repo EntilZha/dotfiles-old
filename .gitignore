@@ -3,3 +3,4 @@ zsh-update
 atom/packages
 atom/.apm
 atom/.gitignore
+.DS_Store
