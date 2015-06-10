@@ -37,21 +37,21 @@
     {}
   minimap:
     {}
-".console.python.text":
+".python.regexp.source":
   editor:
     preferredLineLength: 100
-    tabLength: 4
 ".python.text.traceback":
   editor:
     preferredLineLength: 100
     tabLength: 4
-".python.regexp.source":
+".console.python.text":
   editor:
     preferredLineLength: 100
-".dockerfile.source":
-  editor:
-    preferredLineLength: 100
+    tabLength: 4
 ".python.source":
   editor:
     preferredLineLength: 100
     softWrapAtPreferredLineLength: true
+".dockerfile.source":
+  editor:
+    preferredLineLength: 100
