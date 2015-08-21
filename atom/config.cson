@@ -17,9 +17,9 @@
       "*.pyc"
       ".idea"
     ]
+    projectHome: "~/Code"
   editor:
-    invisibles:
-      {}
+    invisibles: {}
     fontSize: 12
     fontFamily: "Anonymous Pro"
     preferredLineLength: 100
@@ -30,14 +30,11 @@
     ]
     statusBar: "Show all errors"
     lintOnChange: false
-  term2:
-    {}
-  "linter-pylint":
-    {}
+  term2: {}
+  "linter-pylint": {}
   "atom-beautify":
     _analyticsUserId: "8efd8466-162a-424a-8e32-50de7c7fd67a"
-  "autocomplete-python":
-    {}
+  "autocomplete-python": {}
   "tree-view":
     hideIgnoredNames: true
   "autocomplete-plus":
@@ -46,18 +43,15 @@
     ]
   "tool-bar":
     position: "Left"
-  "merge-conflicts":
-    {}
-  "highlight-selected":
-    {}
+  "merge-conflicts": {}
+  "highlight-selected": {}
+  "autocomplete-plus-python-jedi":
+    completeArguments: false
 ".console.python.text":
-  editor:
-    preferredLineLength: 100
-".python.text.traceback":
   editor:
     preferredLineLength: 100
     tabLength: 4
-".console.python.text":
+".python.text.traceback":
   editor:
     preferredLineLength: 100
     tabLength: 4

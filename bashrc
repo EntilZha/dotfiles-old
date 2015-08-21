@@ -6,6 +6,7 @@ unset GOROOT
 export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export PATH=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/bin:$PATH
 export PYTHONPATH=$PYTHONPATH:~/Code/datascience-crowdsourcing/python
 export CLASSPATH=$CLASSPATH:~/Documents/Java-Packages/java-aws-mturk-1.6.2/lib:~/Documents/Java-Packages/java-aws-mturk-1.6.2/lib/third-party
 
@@ -14,6 +15,7 @@ export DOCKER_CERT_PATH=$HOME/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
 
 export SPARK_HOME=$HOME/Code/spark
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/
 
 source ~/.secrets
 
