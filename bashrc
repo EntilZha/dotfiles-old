@@ -3,21 +3,29 @@ EDITOR=mvim
 
 export GOPATH=$HOME/Code/go
 unset GOROOT
+
 export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export PATH=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/bin:$PATH
-export PYTHONPATH=$PYTHONPATH:~/Code/datascience-crowdsourcing/python
+export PATH=/usr/local/sbin:$PATH
+export PATH=/usr/local/Cellar/macvim/7.4-77/bin:$PATH
+export PATH=/Users/pedro/Utilities/activator-dist-1.3.6:$PATH
+
+export PYTHONPATH=$PYTHONPATH:~/Code/pelican-plugins
+export PYTHONPATH=$PYTHONPATH:~/Utilities/spark-1.5.0/python
 export CLASSPATH=$CLASSPATH:~/Documents/Java-Packages/java-aws-mturk-1.6.2/lib:~/Documents/Java-Packages/java-aws-mturk-1.6.2/lib/third-party
 
-export DOCKER_HOST=tcp://192.168.59.103:2376
-export DOCKER_CERT_PATH=$HOME/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
-
-export SPARK_HOME=$HOME/Code/spark
+export SPARK_HOME=~/Utilities/spark-1.5.0
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/
+export RUST_SRC_PATH=/Users/pedro/Code/rust/src
 
 source ~/.secrets
+source ~/pinafore-openrc.sh
+export DOCKER_TLS_VERIFY="1"
+export DOCKER_HOST="tcp://192.168.99.100:2376"
+export DOCKER_CERT_PATH="/Users/pedro/.docker/machine/machines/dev"
+export DOCKER_MACHINE_NAME="dev"
 
 function google() { open "https://www.google.com/search?q=$@"; }
 
@@ -35,8 +43,7 @@ alias sudo="sudo -E"
 alias skim="open -a Skim"
 alias pycharm="/Applications/PyCharm\ CE.app/Contents/MacOS/pycharm"
 alias gatling="~/Code/gatling-charts-highcharts-bundle-2.1.5/bin/gatling.sh"
-
-alias ds1dev="ssh prodriguez@datascience1dev.sv2.trulia.com"
+alias publish-blog="pelican content -o output -s publishconf.py && ghp-import -b master -m 'Updated website' output"
 
 gui_vim() {
 	if [[ $(uname) == 'Linux' ]]; then
@@ -47,8 +54,7 @@ gui_vim() {
 }
 
 alias svim="sudo -E gui_vim"
-alias tvim="gui_vim"
-alias vim="gui_vim"
+alias mvim="gui_vim"
 
 markdown() {
 	file=$1
@@ -60,4 +66,7 @@ markdown() {
 	vim $md_filename
 	open -a Skim $pdf_filename
 }
-export PATH=/usr/local/sbin:$PATH
+
+docker_rmc() {
+	docker rm $(docker ps -a -q)
+}
