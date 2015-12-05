@@ -12,6 +12,8 @@ export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/Cellar/macvim/7.4-77/bin:$PATH
 export PATH=/Users/pedro/Utilities/activator-dist-1.3.6:$PATH
 
+export GRAPPA_PREFIX=/Users/pedro/Code/grappa/build/Make+Release/install
+
 export CC=/usr/local/Cellar/gcc/5.2.0/bin/gcc-5
 export CXX=/usr/local/Cellar/gcc/5.2.0/bin/g++-5
 
@@ -31,6 +33,8 @@ export DOCKER_TLS_VERIFY="1"
 export DOCKER_HOST="tcp://192.168.99.100:2376"
 export DOCKER_CERT_PATH="/Users/pedro/.docker/machine/machines/dev"
 export DOCKER_MACHINE_NAME="dev"
+
+export TERM=xterm-256color
 
 function google() { open "https://www.google.com/search?q=$@"; }
 

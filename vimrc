@@ -26,6 +26,8 @@ Plugin 'vim-scripts/nginx.vim' "Nginx support
 Plugin 'ekalinin/Dockerfile.vim' "Dockerfile support
 Plugin 'elzr/vim-json' "Json support
 Plugin 'vim-scripts/SQLComplete.vim' "SQL Support
+Plugin 'derekwyatt/vim-scala' " Scala support
+Plugin 'rdnetto/YCM-Generator' " C/C++ Support
 
 
 " Stylistic
