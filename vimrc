@@ -75,6 +75,7 @@ nnoremap <leader>v <C-w>v<C-w>l
 " Default tabstop and shiftwidth
 set tabstop=2 shiftwidth=2
 set backspace=indent,eol,start
+set expandtab
 
 " Configure search
 set hlsearch
@@ -93,6 +94,7 @@ set guioptions-=L
 " Set my color scheme and preferred font
 set guifont=Anonymous\ Pro\ for\ Powerline:h12
 colorscheme molokai
+set transparency=5
 
 " Configure python checker
 let g:syntastic_python_checkers = ['pylint']
@@ -209,4 +211,22 @@ nnoremap <C-N> :NERDTreeToggle<CR>
 " Start vim with file focused instead of nerdtree
 autocmd VimEnter * wincmd p
 autocmd VimEnter * if (line('$') == 1 && getline(1) == '') | wincmd p | endif
+
+" Disable YCM for C/C++ for Grappa project
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'unite' : 1,
+      \ 'text' : 1,
+      \ 'vimwiki' : 1,
+      \ 'pandoc' : 1,
+      \ 'infolog' : 1,
+      \ 'mail' : 1,
+      \ 'hpp': 1,
+			\ 'cpp': 1}
+
+" Save file when focus is lost
+autocmd BufLeave,FocusLost * wall
 
