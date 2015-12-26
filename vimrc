@@ -28,6 +28,8 @@ Plugin 'elzr/vim-json' "Json support
 Plugin 'vim-scripts/SQLComplete.vim' "SQL Support
 Plugin 'derekwyatt/vim-scala' " Scala support
 Plugin 'rdnetto/YCM-Generator' " C/C++ Support
+Plugin 'rust-lang/rust.vim' " Rust support
+Plugin 'racer-rust/vim-racer' " Rust autocomplete support
 
 
 " Stylistic
@@ -38,6 +40,7 @@ Plugin 'airblade/vim-gitgutter' " Git visual support
 " Auto completion and snippets
 Plugin 'szw/vim-tags' " ctags support
 Plugin 'Valloric/YouCompleteMe' " Tab autocompletion
+Plugin 'davidhalter/jedi-vim' " Python jedi support
 
 " Utility
 Plugin 'scrooloose/nerdcommenter' " Comment code easily
@@ -225,8 +228,12 @@ let g:ycm_filetype_blacklist = {
       \ 'infolog' : 1,
       \ 'mail' : 1,
       \ 'hpp': 1,
+      \ 'python': 1,
+      \ 'py': 1,
 			\ 'cpp': 1}
 
 " Save file when focus is lost
 autocmd BufLeave,FocusLost * wall
 
+" Racer config
+let g:racer_cmd = "/Users/pedro/.cargo/bin/racer"

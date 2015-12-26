@@ -6,4 +6,5 @@ atom/.gitignore
 atom/storage
 atom/compile-cache
 atom/.node-gyp
+atom/blob-store
 .DS_Store

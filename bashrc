@@ -11,11 +11,14 @@ export PATH=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/bin:
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/Cellar/macvim/7.4-77/bin:$PATH
 export PATH=/Users/pedro/Utilities/activator-dist-1.3.6:$PATH
+export PATH=/Users/pedro/.cargo/bin:$PATH
 
 export GRAPPA_PREFIX=/Users/pedro/Code/grappa/build/Make+Release/install
 
 export CC=/usr/local/Cellar/gcc/5.2.0/bin/gcc-5
 export CXX=/usr/local/Cellar/gcc/5.2.0/bin/g++-5
+
+export RUST_SRC_PATH=/Users/pedro/Documents/Code/rust/src/
 
 export PYTHONPATH=$PYTHONPATH:~/Code/pelican-plugins
 export PYTHONPATH=$PYTHONPATH:~/Utilities/spark-1.5.0/python
@@ -25,7 +28,6 @@ export SPARK_HOME=~/Utilities/spark-1.5.0
 export PYSPARK_PYTHON=python3
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
-export RUST_SRC_PATH=/Users/pedro/Code/rust/src
 
 source ~/.secrets
 source ~/pinafore-openrc.sh
