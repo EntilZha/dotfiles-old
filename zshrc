@@ -8,6 +8,16 @@ source $HOME/.bashrc
 # time that oh-my-zsh is loaded.
 ZSH_THEME="soliah"
 
+bindkey -v
+export KEYTIMEOUT=1
+
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 

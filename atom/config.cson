@@ -1,15 +1,18 @@
 "*":
-  softTabs: true
-  "exception-reporting":
-    userId: "ff16a854-9245-e5f5-f583-8f8d80213bac"
-  welcome:
-    showOnStartup: false
-  core:
-    themes: [
-      "one-dark-ui"
-      "monokai"
+  "atom-beautify":
+    _analyticsUserId: "8efd8466-162a-424a-8e32-50de7c7fd67a"
+  "autocomplete-plus":
+    fileBlacklist: [
+      "*.md"
     ]
-    projectHome: "~/Code"
+  "autocomplete-plus-python-jedi":
+    completeArguments: false
+  "autocomplete-python": {}
+  core:
+    disabledPackages: [
+      "markdown-preview"
+      "language-gfm"
+    ]
     ignoredNames: [
       ".git"
       ".hg"
@@ -20,75 +23,80 @@
       ".idea"
       "._*"
     ]
-    disabledPackages: [
-      "markdown-preview"
-      "language-gfm"
+    projectHome: "~/Code"
+    themes: [
+      "one-dark-ui"
+      "monokai"
     ]
   editor:
-    invisibles: {}
-    fontSize: 12
     fontFamily: "Anonymous Pro"
+    fontSize: 12
+    invisibles: {}
     preferredLineLength: 100
+    scrollPastEnd: true
+    showIndentGuide: true
     tabLength: 4
+  "exception-reporting":
+    userId: "ff16a854-9245-e5f5-f583-8f8d80213bac"
+  "highlight-selected": {}
   linter:
+    ignoreMatchedFiles: "*.md"
+    lintOnChange: false
+    statusBar: "Show all errors"
     subtleLinterErrors: [
       "pylint"
     ]
-    statusBar: "Show all errors"
-    lintOnChange: false
-  term2: {}
   "linter-pylint":
     executable: "/usr/local/bin/pylint"
-  "atom-beautify":
-    _analyticsUserId: "8efd8466-162a-424a-8e32-50de7c7fd67a"
-  "autocomplete-python": {}
-  "tree-view":
-    hideIgnoredNames: true
-  "autocomplete-plus":
-    fileBlacklist: [
-      "*.md"
+  "markdown-preview": {}
+  "markdown-preview-plus":
+    enableLatexRenderingByDefault: true
+    enablePandoc: true
+    pandocArguments: [
+      "-V geometry:margin=1in --standalone -s"
     ]
-  "tool-bar":
-    position: "Left"
+    pandocPath: "/usr/local/bin/pandoc"
+    useGitHubStyle: true
   "merge-conflicts": {}
-  "highlight-selected": {}
-  "autocomplete-plus-python-jedi":
-    completeArguments: false
-  "vim-mode": {}
+  "one-dark-ui": {}
   pandoc: {}
+  "python-indent": {}
   racer:
     racerBinPath: "/Users/pedro/Code/racer/target/release/racer"
     rustSrcPath: "/Users/pedro/Code/rust/src"
-  "markdown-preview-plus":
-    enableLatexRenderingByDefault: true
-    pandocPath: "/usr/local/bin/pandoc"
-    pandocArguments: [
-      "-V geometry:margin=1in"
-    ]
-    useGitHubStyle: true
-    enablePandoc: true
-  "markdown-preview": {}
-".python.text.traceback":
-  editor:
-    preferredLineLength: 100
-    tabLength: 4
+  softTabs: true
+  term2: {}
+  "tool-bar":
+    position: "Left"
+  "tree-view":
+    hideIgnoredNames: true
+  "vim-mode": {}
+  welcome:
+    showOnStartup: false
 ".console.python.text":
   editor:
     preferredLineLength: 100
     tabLength: 4
-".source.yaml":
+".dockerfile.source":
   editor:
     preferredLineLength: 100
+".gfm.source":
+  editor:
+    preferredLineLength: 120
     tabLength: 2
-    showInvisibles: false
-".dockerfile.source":
+".python.regexp.source":
   editor:
     preferredLineLength: 100
 ".python.source":
   editor:
     preferredLineLength: 100
     softWrapAtPreferredLineLength: true
-".gfm.source":
+".python.text.traceback":
   editor:
-    preferredLineLength: 120
+    preferredLineLength: 100
+    tabLength: 4
+".source.yaml":
+  editor:
+    preferredLineLength: 100
+    showInvisibles: false
     tabLength: 2

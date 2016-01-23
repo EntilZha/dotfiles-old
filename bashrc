@@ -12,13 +12,16 @@ export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/Cellar/macvim/7.4-77/bin:$PATH
 export PATH=/Users/pedro/Utilities/activator-dist-1.3.6:$PATH
 export PATH=/Users/pedro/.cargo/bin:$PATH
+export PATH=$PATH:/Users/pedro/Documents/Code/kenlm/bin
 
 export GRAPPA_PREFIX=/Users/pedro/Code/grappa/build/Make+Release/install
 
-export CC=/usr/local/Cellar/gcc/5.2.0/bin/gcc-5
-export CXX=/usr/local/Cellar/gcc/5.2.0/bin/g++-5
+export CC=/usr/local/Cellar/gcc/5.3.0/bin/gcc-5
+export CXX=/usr/local/Cellar/gcc/5.3.0/bin/g++-5
 
 export RUST_SRC_PATH=/Users/pedro/Documents/Code/rust/src/
+
+export BOOST_ROOT=/Users/pedro/Utilities/boost_1_60_0
 
 export PYTHONPATH=$PYTHONPATH:~/Code/pelican-plugins
 export PYTHONPATH=$PYTHONPATH:~/Utilities/spark-1.5.0/python
@@ -35,6 +38,10 @@ export DOCKER_TLS_VERIFY="1"
 export DOCKER_HOST="tcp://192.168.99.100:2376"
 export DOCKER_CERT_PATH="/Users/pedro/.docker/machine/machines/dev"
 export DOCKER_MACHINE_NAME="dev"
+
+export QB_QUESTION_DB=/Users/pedro/Documents/Code/qb/data/non_naqt.db
+export QB_GUESS_DB=/Users/pedro/Documents/Code/qb/data/guesses.db
+export QB_SPARK_MASTER="spark://terminus.local:7077"
 
 export TERM=xterm-256color
 
