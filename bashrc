@@ -41,6 +41,7 @@ export DOCKER_MACHINE_NAME="dev"
 
 export QB_QUESTION_DB=/Users/pedro/Documents/Code/qb/data/non_naqt.db
 export QB_GUESS_DB=/Users/pedro/Documents/Code/qb/data/guesses.db
+export QB_ROOT=/Users/pedro/Documents/Code/qb/
 export QB_SPARK_MASTER="spark://terminus.local:7077"
 
 export TERM=xterm-256color
