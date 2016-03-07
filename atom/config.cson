@@ -8,6 +8,7 @@
   "autocomplete-plus-python-jedi":
     completeArguments: false
   "autocomplete-python": {}
+  "build-cargo": {}
   core:
     disabledPackages: [
       "markdown-preview"
@@ -35,6 +36,8 @@
     preferredLineLength: 100
     scrollPastEnd: true
     showIndentGuide: true
+    softWrap: true
+    softWrapAtPreferredLineLength: true
     tabLength: 4
   "exception-reporting":
     userId: "ff16a854-9245-e5f5-f583-8f8d80213bac"
@@ -48,6 +51,7 @@
     ]
   "linter-pylint":
     executable: "/usr/local/bin/pylint"
+  "linter-rust": {}
   "markdown-preview": {}
   "markdown-preview-plus":
     enableLatexRenderingByDefault: true
@@ -84,6 +88,17 @@
   editor:
     preferredLineLength: 120
     tabLength: 2
+".html.jinja.text":
+  editor:
+    preferredLineLength: 100
+    softWrap: false
+".jinja.source":
+  editor:
+    preferredLineLength: 100
+    softWrap: false
+".json.source":
+  editor:
+    preferredLineLength: 100
 ".python.regexp.source":
   editor:
     preferredLineLength: 100
@@ -95,6 +110,9 @@
   editor:
     preferredLineLength: 100
     tabLength: 4
+".rust.source":
+  editor:
+    preferredLineLength: 120
 ".source.yaml":
   editor:
     preferredLineLength: 100

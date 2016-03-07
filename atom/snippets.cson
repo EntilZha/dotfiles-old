@@ -27,3 +27,6 @@
         \\\\end{align}
         $$
         """
+    'mathcal':
+        'prefix': 'mathcal'
+        'body': '\\\\mathcal{$1}'

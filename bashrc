@@ -4,15 +4,17 @@ EDITOR=mvim
 export GOPATH=$HOME/Code/go
 unset GOROOT
 
+export PATH=$PATH:/usr/local/bin/brew
 export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export PATH=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/Cellar/macvim/7.4-77/bin:$PATH
-export PATH=/Users/pedro/Utilities/activator-dist-1.3.6:$PATH
+export PATH=/Users/pedro/Utilities/activator-1.3.7-minimal:$PATH
 export PATH=/Users/pedro/.cargo/bin:$PATH
 export PATH=$PATH:/Users/pedro/Documents/Code/kenlm/bin
+export PATH=$PATH:/Users/pedro/Utilities/termpdf
 
 export GRAPPA_PREFIX=/Users/pedro/Code/grappa/build/Make+Release/install
 
@@ -20,6 +22,9 @@ export CC=/usr/local/Cellar/gcc/5.3.0/bin/gcc-5
 export CXX=/usr/local/Cellar/gcc/5.3.0/bin/g++-5
 
 export RUST_SRC_PATH=/Users/pedro/Documents/Code/rust/src/
+export OPENSSL_LIB_DIR=/usr/local/Cellar/openssl/1.0.2f/lib/
+export OPENSSL_INCLUDE_DIR=/usr/local/Cellar/openssl/1.0.2f/include/
+export C_INCLUDE_PATH=/usr/local/Cellar/openssl/1.0.2f/include:$C_INCLUDE_PATH
 
 export BOOST_ROOT=/Users/pedro/Utilities/boost_1_60_0
 
@@ -43,6 +48,8 @@ export QB_QUESTION_DB=/Users/pedro/Documents/Code/qb/data/non_naqt.db
 export QB_GUESS_DB=/Users/pedro/Documents/Code/qb/data/guesses.db
 export QB_ROOT=/Users/pedro/Documents/Code/qb/
 export QB_SPARK_MASTER="spark://terminus.local:7077"
+
+export EC2_HOME=/Users/pedro/Utilities/ec2-api-tools-1.7.5.1
 
 export TERM=xterm-256color
 
