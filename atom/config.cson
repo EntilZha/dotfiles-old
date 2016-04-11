@@ -8,8 +8,10 @@
   "autocomplete-plus-python-jedi":
     completeArguments: false
   "autocomplete-python": {}
+  build: {}
   "build-cargo": {}
   core:
+    audioBeep: false
     disabledPackages: [
       "markdown-preview"
       "language-gfm"
@@ -23,6 +25,7 @@
       "*.pyc"
       ".idea"
       "._*"
+      ".ipynb_checkpoints"
     ]
     projectHome: "~/Code"
     themes: [
@@ -51,6 +54,7 @@
     ]
   "linter-pylint":
     executable: "/usr/local/bin/pylint"
+    rcFile: "/Users/pedro/.pylintrc"
   "linter-rust": {}
   "markdown-preview": {}
   "markdown-preview-plus":

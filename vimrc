@@ -8,7 +8,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Search, File Directories...
-Plugin 'kien/ctrlp.vim' " Fuzzy finder search
+Plugin 'ctrlpvim/ctrlp.vim' " Fuzzy finder search
 Plugin 'scrooloose/nerdtree' " File navigation tree
 
 " Buffer plugins
@@ -33,9 +33,11 @@ Plugin 'racer-rust/vim-racer' " Rust autocomplete support
 
 
 " Stylistic
-Plugin 'Lokaltog/powerline-fonts' " Fonts for powerline/airline
+" Plugin 'Lokaltog/powerline-fonts' " Fonts for powerline/airline
 Plugin 'bling/vim-airline' " Nice status bar
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter' " Git visual support
+Plugin 'ryanoasis/vim-devicons'
 
 " Auto completion and snippets
 Plugin 'szw/vim-tags' " ctags support
@@ -95,7 +97,7 @@ set guioptions-=r
 set guioptions-=L
 
 " Set my color scheme and preferred font
-set guifont=Anonymous\ Pro\ for\ Powerline:h12
+set guifont=Anonymice\ Powerline\ Nerd\ Font:h12
 colorscheme molokai
 set transparency=5
 

@@ -4,8 +4,7 @@ EDITOR=mvim
 export GOPATH=$HOME/Code/go
 unset GOROOT
 
-export PATH=$PATH:/usr/local/bin/brew
-export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
+export PATH=$(/usr/local/bin/brew --prefix coreutils)/libexec/gnubin:$PATH
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export PATH=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/bin:$PATH
@@ -15,6 +14,8 @@ export PATH=/Users/pedro/Utilities/activator-1.3.7-minimal:$PATH
 export PATH=/Users/pedro/.cargo/bin:$PATH
 export PATH=$PATH:/Users/pedro/Documents/Code/kenlm/bin
 export PATH=$PATH:/Users/pedro/Utilities/termpdf
+export PATH=/Users/pedro/Library/Android/sdk/platform-tools:$PATH
+export PATH=$PATH:/Users/pedro/Utilities/gurobi550/linux64/bin:/Users/pedro/Utilities/gurobi605/linux64/bin
 
 export GRAPPA_PREFIX=/Users/pedro/Code/grappa/build/Make+Release/install
 
@@ -25,6 +26,11 @@ export RUST_SRC_PATH=/Users/pedro/Documents/Code/rust/src/
 export OPENSSL_LIB_DIR=/usr/local/Cellar/openssl/1.0.2f/lib/
 export OPENSSL_INCLUDE_DIR=/usr/local/Cellar/openssl/1.0.2f/include/
 export C_INCLUDE_PATH=/usr/local/Cellar/openssl/1.0.2f/include:$C_INCLUDE_PATH
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/Users/pedro/Utilities/gurobi605/linux64/lib:/Users/pedro/Utilities/gurobi550/linux64/lib
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/Users/pedro/Utilities/gurobi605/linux64/lib:/Users/pedro/Utilities/gurobi550/linux64/lib
+
+export GRB_LICENSE_FILE=/Users/pedro/Utilities/gurobi.lic
 
 export BOOST_ROOT=/Users/pedro/Utilities/boost_1_60_0
 
@@ -44,7 +50,7 @@ export DOCKER_HOST="tcp://192.168.99.100:2376"
 export DOCKER_CERT_PATH="/Users/pedro/.docker/machine/machines/dev"
 export DOCKER_MACHINE_NAME="dev"
 
-export QB_QUESTION_DB=/Users/pedro/Documents/Code/qb/data/non_naqt.db
+export QB_QUESTION_DB=/Users/pedro/Documents/Code/qb/data/naqt.db
 export QB_GUESS_DB=/Users/pedro/Documents/Code/qb/data/guesses.db
 export QB_ROOT=/Users/pedro/Documents/Code/qb/
 export QB_SPARK_MASTER="spark://terminus.local:7077"
@@ -70,6 +76,7 @@ alias skim="open -a Skim"
 alias pycharm="/Applications/PyCharm\ CE.app/Contents/MacOS/pycharm"
 alias gatling="~/Code/gatling-charts-highcharts-bundle-2.1.5/bin/gatling.sh"
 alias publish-blog="pelican content -o output -s publishconf.py && ghp-import -b master -m 'Updated website' output"
+alias qbssh="ssh -i ~/Downloads/pedro-key.pem ubuntu@52.9.103.244"
 
 tar_compress() {
 	tar -zcvf $1.tar.gz $1
@@ -92,6 +99,7 @@ gui_vim() {
 
 alias svim="sudo -E gui_vim"
 alias mvim="gui_vim"
+alias vi="gui_vim"
 
 markdown() {
 	file=$1
