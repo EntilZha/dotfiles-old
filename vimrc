@@ -33,7 +33,6 @@ Plugin 'racer-rust/vim-racer' " Rust autocomplete support
 
 
 " Stylistic
-" Plugin 'Lokaltog/powerline-fonts' " Fonts for powerline/airline
 Plugin 'bling/vim-airline' " Nice status bar
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter' " Git visual support
@@ -97,13 +96,12 @@ set guioptions-=r
 set guioptions-=L
 
 " Set my color scheme and preferred font
-set guifont=Anonymice\ Powerline\ Nerd\ Font:h12
+set guifont=Anonymice\ Powerline\ Nerd\ Font:h11
 colorscheme molokai
-set transparency=5
 
 " Configure python checker
 let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_python_pylint_args = '--rcfile=~/.pylintrc' 
+let g:syntastic_python_pylint_args = '--rcfile=~/.pylintrc'
 
 " Remap autocomplete to something more natural
 inoremap <C-Space> <C-x><C-o>
@@ -239,3 +237,13 @@ autocmd BufLeave,FocusLost * wall
 
 " Racer config
 let g:racer_cmd = "/Users/pedro/.cargo/bin/racer"
+let g:python_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
+" iTerm 2 Cursor support
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+
+" Eliminate delay from insert to normal mode
+set timeoutlen=1000 ttimeoutlen=0

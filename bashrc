@@ -16,11 +16,15 @@ export PATH=$PATH:/Users/pedro/Documents/Code/kenlm/bin
 export PATH=$PATH:/Users/pedro/Utilities/termpdf
 export PATH=/Users/pedro/Library/Android/sdk/platform-tools:$PATH
 export PATH=$PATH:/Users/pedro/Utilities/gurobi550/linux64/bin:/Users/pedro/Utilities/gurobi605/linux64/bin
+export PATH=$PATH:/Users/pedro/Code/cargo-clippy/target/release/
 
 export GRAPPA_PREFIX=/Users/pedro/Code/grappa/build/Make+Release/install
 
-export CC=/usr/local/Cellar/gcc/5.3.0/bin/gcc-5
-export CXX=/usr/local/Cellar/gcc/5.3.0/bin/g++-5
+#export CC=/usr/local/Cellar/gcc/5.3.0/bin/gcc-5
+#export CXX=/usr/local/Cellar/gcc/5.3.0/bin/g++-5
+
+export CC=clang
+export CXX=clang++
 
 export RUST_SRC_PATH=/Users/pedro/Documents/Code/rust/src/
 export OPENSSL_LIB_DIR=/usr/local/Cellar/openssl/1.0.2f/lib/

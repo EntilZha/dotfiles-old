@@ -46,6 +46,7 @@
     userId: "ff16a854-9245-e5f5-f583-8f8d80213bac"
   "highlight-selected": {}
   linter:
+    errorPanelHeight: 120
     ignoreMatchedFiles: "*.md"
     lintOnChange: false
     statusBar: "Show all errors"
