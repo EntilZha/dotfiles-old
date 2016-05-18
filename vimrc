@@ -97,6 +97,10 @@ set guioptions-=L
 
 " Set my color scheme and preferred font
 set guifont=Anonymice\ Powerline\ Nerd\ Font:h11
+if has("gui_macvim")
+  set guifont=Anonymice\ Powerline\ Nerd\ Font:h12
+endif
+
 colorscheme molokai
 
 " Configure python checker

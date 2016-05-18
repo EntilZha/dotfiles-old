@@ -17,6 +17,10 @@ export PATH=$PATH:/Users/pedro/Utilities/termpdf
 export PATH=/Users/pedro/Library/Android/sdk/platform-tools:$PATH
 export PATH=$PATH:/Users/pedro/Utilities/gurobi550/linux64/bin:/Users/pedro/Utilities/gurobi605/linux64/bin
 export PATH=$PATH:/Users/pedro/Code/cargo-clippy/target/release/
+export PATH="$HOME/.node/bin:$PATH"
+export PATH=$PATH:/Users/pedro/.npm-packages/bin
+export PATH=$PATH:/Users/pedro/Utilities/spark-1.6.1-bin-hadoop2.6/bin
+export PATH=$PATH:/Users/pedro/Utilities/bin
 
 export GRAPPA_PREFIX=/Users/pedro/Code/grappa/build/Make+Release/install
 
@@ -39,10 +43,10 @@ export GRB_LICENSE_FILE=/Users/pedro/Utilities/gurobi.lic
 export BOOST_ROOT=/Users/pedro/Utilities/boost_1_60_0
 
 export PYTHONPATH=$PYTHONPATH:~/Code/pelican-plugins
-export PYTHONPATH=$PYTHONPATH:~/Utilities/spark-1.5.0/python
+export PYTHONPATH=$PYTHONPATH:~/Utilities/spark-1.6.1-bin-hadoop2.6/python
 export CLASSPATH=$CLASSPATH:~/Documents/Java-Packages/java-aws-mturk-1.6.2/lib:~/Documents/Java-Packages/java-aws-mturk-1.6.2/lib/third-party
 
-export SPARK_HOME=~/Utilities/spark-1.5.0
+export SPARK_HOME=~/Utilities/spark-1.6.1-bin-hadoop2.6
 export PYSPARK_PYTHON=python3
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
