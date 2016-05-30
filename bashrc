@@ -85,6 +85,7 @@ alias pycharm="/Applications/PyCharm\ CE.app/Contents/MacOS/pycharm"
 alias gatling="~/Code/gatling-charts-highcharts-bundle-2.1.5/bin/gatling.sh"
 alias publish-blog="pelican content -o output -s publishconf.py && ghp-import -b master -m 'Updated website' output"
 alias qbssh="ssh -i ~/Downloads/pedro-key.pem ubuntu@52.9.103.244"
+alias terminus="ssh pedro@terminus.pedrorodriguez.io"
 
 tar_compress() {
 	tar -zcvf $1.tar.gz $1

@@ -107,6 +107,10 @@ colorscheme molokai
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_python_pylint_args = '--rcfile=~/.pylintrc'
 
+" Syntastic
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 " Remap autocomplete to something more natural
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
