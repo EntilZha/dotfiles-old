@@ -1,0 +1,19 @@
+from xonsh.environ import current_branch, git_dirty_working_directory
+
+def branch_text():
+    branch = current_branch(pad=False)
+    if git_dirty_working_directory(include_untracked=True):
+        color = '{BOLD_INTENSE_RED}'
+    else:
+        color = '{BOLD_INTENSE_GREEN}'
+    if branch:
+        branch = '{WHITE} (' + color + branch + '{WHITE})'
+    return branch
+
+$FORMATTER_DICT['branch_text'] = branch_text
+del branch_text
+
+$PROMPT = '{GREEN}{user} {WHITE}on {RED}{hostname} {WHITE}in {BLUE}{cwd}{branch_text}\n{WHITE}$ {NO_COLOR}'
+aliases['ls'] = ['ls', '--color=auto', '-v']
+aliases['grep'] = ['grep', '--color=auto']
+

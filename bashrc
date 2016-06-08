@@ -86,6 +86,8 @@ alias gatling="~/Code/gatling-charts-highcharts-bundle-2.1.5/bin/gatling.sh"
 alias publish-blog="pelican content -o output -s publishconf.py && ghp-import -b master -m 'Updated website' output"
 alias qbssh="ssh -i ~/Downloads/pedro-key.pem ubuntu@52.9.103.244"
 alias terminus="ssh pedro@terminus.pedrorodriguez.io"
+alias glances="glances -1"
+alias gl="glances -1"
 
 tar_compress() {
 	tar -zcvf $1.tar.gz $1
@@ -124,3 +126,4 @@ markdown() {
 docker_rmc() {
 	docker rm $(docker ps -a -q)
 }
+
