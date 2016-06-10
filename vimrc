@@ -2,6 +2,7 @@
 filetype off
 set nocompatible
 set rtp+=~/.vim/bundle/Vundle.vim
+set shell=zsh
 call vundle#begin()
 
 " Framework Vim
@@ -10,6 +11,7 @@ Plugin 'gmarik/Vundle.vim'
 " Search, File Directories...
 Plugin 'ctrlpvim/ctrlp.vim' " Fuzzy finder search
 Plugin 'scrooloose/nerdtree' " File navigation tree
+Plugin 'jistr/vim-nerdtree-tabs'
 
 " Buffer plugins
 Plugin 'rbgrouleff/bclose.vim' " Close buffers without closing window
@@ -17,19 +19,22 @@ Plugin 'bufkill.vim'
 Plugin 'jlanzarotta/bufexplorer' " Better buffer explorer
 
 " Language Support
-Plugin 'scrooloose/syntastic' " Syntax for code
-Plugin 'pangloss/vim-javascript' " Javascript support
-Plugin 'vim-pandoc/vim-pandoc' " Pandoc support
-Plugin 'vim-pandoc/vim-pandoc-syntax' " Pandoc syntax support
-Plugin 'LaTeX-Box-Team/LaTeX-Box' " LaTeX support
-Plugin 'vim-scripts/nginx.vim' "Nginx support
-Plugin 'ekalinin/Dockerfile.vim' "Dockerfile support
-Plugin 'elzr/vim-json' "Json support
-Plugin 'vim-scripts/SQLComplete.vim' "SQL Support
-Plugin 'derekwyatt/vim-scala' " Scala support
-Plugin 'rdnetto/YCM-Generator' " C/C++ Support
-Plugin 'rust-lang/rust.vim' " Rust support
-Plugin 'racer-rust/vim-racer' " Rust autocomplete support
+Plugin 'scrooloose/syntastic'
+Plugin 'pangloss/vim-javascript'
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
+Plugin 'vim-scripts/nginx.vim'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'elzr/vim-json'
+Plugin 'vim-scripts/SQLComplete.vim'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'rdnetto/YCM-Generator'
+Plugin 'rust-lang/rust.vim'
+Plugin 'racer-rust/vim-racer'
+Plugin 'linkinpark342/xonsh-vim'
+Plugin 'hashivim/vim-vagrant'
+Plugin 'vim-scripts/indentpython.vim'
 
 
 " Stylistic
@@ -110,7 +115,10 @@ let g:syntastic_python_pylint_args = '--rcfile=~/.pylintrc'
 " Syntastic
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let python_highlight_all=1
 
+" YCM Config
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " Remap autocomplete to something more natural
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
@@ -255,3 +263,6 @@ let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 
 " Eliminate delay from insert to normal mode
 set timeoutlen=1000 ttimeoutlen=0
+
+let g:vim_json_syntax_conceal = 0
+

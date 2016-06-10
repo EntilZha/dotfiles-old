@@ -13,7 +13,9 @@ def branch_text():
 $FORMATTER_DICT['branch_text'] = branch_text
 del branch_text
 
-$PROMPT = '{GREEN}{user} {WHITE}on {RED}{hostname} {WHITE}in {BLUE}{cwd}{branch_text}\n{WHITE}$ {NO_COLOR}'
+$PROMPT = '{GREEN}{user} {WHITE}on {INTENSE_RED}{hostname} {WHITE}in {BLUE}{cwd}{branch_text}\n{WHITE}$ {NO_COLOR}'
 aliases['ls'] = ['ls', '--color=auto', '-v']
 aliases['grep'] = ['grep', '--color=auto']
+
+$XONSH_COLOR_STYLE = 'monokai'
 

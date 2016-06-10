@@ -21,6 +21,7 @@ export PATH="$HOME/.node/bin:$PATH"
 export PATH=$PATH:/Users/pedro/.npm-packages/bin
 export PATH=$PATH:/Users/pedro/Utilities/spark-1.6.1-bin-hadoop2.6/bin
 export PATH=$PATH:/Users/pedro/Utilities/bin
+export PATH=/usr/local/bin:$PATH
 
 export GRAPPA_PREFIX=/Users/pedro/Code/grappa/build/Make+Release/install
 
@@ -100,17 +101,7 @@ tar_decompress() {
 alias tarc=tar_compress
 alias tard=tar_decompress
 
-gui_vim() {
-	if [[ $(uname) == 'Linux' ]]; then
-		gvim "$@"
-	else
-		mvim "$@"
-	fi
-}
-
-alias svim="sudo -E gui_vim"
-alias mvim="gui_vim"
-alias vi="gui_vim"
+alias svim="sudo -E vim"
 
 markdown() {
 	file=$1
