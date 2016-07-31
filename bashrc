@@ -15,18 +15,13 @@ export PATH=/Users/pedro/.cargo/bin:$PATH
 export PATH=$PATH:/Users/pedro/Documents/Code/kenlm/bin
 export PATH=$PATH:/Users/pedro/Utilities/termpdf
 export PATH=/Users/pedro/Library/Android/sdk/platform-tools:$PATH
-export PATH=$PATH:/Users/pedro/Utilities/gurobi550/linux64/bin:/Users/pedro/Utilities/gurobi605/linux64/bin
-export PATH=$PATH:/Users/pedro/Code/cargo-clippy/target/release/
+export PATH=$PATH:/Users/pedro/Code/cargo-clippy/target/release
 export PATH="$HOME/.node/bin:$PATH"
 export PATH=$PATH:/Users/pedro/.npm-packages/bin
-export PATH=$PATH:/Users/pedro/Utilities/spark-1.6.1-bin-hadoop2.6/bin
 export PATH=$PATH:/Users/pedro/Utilities/bin
 export PATH=/usr/local/bin:$PATH
 
 export GRAPPA_PREFIX=/Users/pedro/Code/grappa/build/Make+Release/install
-
-#export CC=/usr/local/Cellar/gcc/5.3.0/bin/gcc-5
-#export CXX=/usr/local/Cellar/gcc/5.3.0/bin/g++-5
 
 export CC=clang
 export CXX=clang++
@@ -36,24 +31,17 @@ export OPENSSL_LIB_DIR=/usr/local/Cellar/openssl/1.0.2f/lib/
 export OPENSSL_INCLUDE_DIR=/usr/local/Cellar/openssl/1.0.2f/include/
 export C_INCLUDE_PATH=/usr/local/Cellar/openssl/1.0.2f/include:$C_INCLUDE_PATH
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/Users/pedro/Utilities/gurobi605/linux64/lib:/Users/pedro/Utilities/gurobi550/linux64/lib
-export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/Users/pedro/Utilities/gurobi605/linux64/lib:/Users/pedro/Utilities/gurobi550/linux64/lib
-
-export GRB_LICENSE_FILE=/Users/pedro/Utilities/gurobi.lic
-
 export BOOST_ROOT=/Users/pedro/Utilities/boost_1_60_0
 
-export PYTHONPATH=$PYTHONPATH:~/Code/pelican-plugins
-export PYTHONPATH=$PYTHONPATH:~/Utilities/spark-1.6.1-bin-hadoop2.6/python
-export CLASSPATH=$CLASSPATH:~/Documents/Java-Packages/java-aws-mturk-1.6.2/lib:~/Documents/Java-Packages/java-aws-mturk-1.6.2/lib/third-party
+export PYTHONPATH=$PYTHONPATH:~/Code/pelican-plugins:/Users/pedro/Utilities/spark-1.6.1-bin-hadoop2.6/python
 
-export SPARK_HOME=~/Utilities/spark-1.6.1-bin-hadoop2.6
 export PYSPARK_PYTHON=python3
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
 
 source ~/.secrets
 source ~/pinafore-openrc.sh
+ssh-add ~/pedro-key.pem
 export DOCKER_TLS_VERIFY="1"
 export DOCKER_HOST="tcp://192.168.99.100:2376"
 export DOCKER_CERT_PATH="/Users/pedro/.docker/machine/machines/dev"
@@ -63,6 +51,8 @@ export QB_QUESTION_DB=/Users/pedro/Documents/Code/qb/data/naqt.db
 export QB_GUESS_DB=/Users/pedro/Documents/Code/qb/data/guesses.db
 export QB_ROOT=/Users/pedro/Documents/Code/qb/
 export QB_SPARK_MASTER="spark://terminus.local:7077"
+
+export TF_VAR_key_pair="pedro-key"
 
 export EC2_HOME=/Users/pedro/Utilities/ec2-api-tools-1.7.5.1
 
@@ -86,9 +76,14 @@ alias pycharm="/Applications/PyCharm\ CE.app/Contents/MacOS/pycharm"
 alias gatling="~/Code/gatling-charts-highcharts-bundle-2.1.5/bin/gatling.sh"
 alias publish-blog="pelican content -o output -s publishconf.py && ghp-import -b master -m 'Updated website' output"
 alias qbssh="ssh -i ~/Downloads/pedro-key.pem ubuntu@52.9.103.244"
-alias terminus="ssh pedro@terminus.pedrorodriguez.io"
+alias terminus="ssh pedro@terminus.entilzha.io"
 alias glances="glances -1"
 alias gl="glances -1"
+alias awssh=aws_ssh
+
+aws_ssh() {
+  ssh -i ~/Downloads/pedro-key.pem "ubuntu@$1"
+}
 
 tar_compress() {
 	tar -zcvf $1.tar.gz $1
@@ -118,3 +113,6 @@ docker_rmc() {
 	docker rm $(docker ps -a -q)
 }
 
+
+# added by travis gem
+[ -f /Users/pedro/.travis/travis.sh ] && source /Users/pedro/.travis/travis.sh

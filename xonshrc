@@ -1,7 +1,7 @@
 from xonsh.environ import current_branch, git_dirty_working_directory
 
 def branch_text():
-    branch = current_branch(pad=False)
+    branch = current_branch()
     if git_dirty_working_directory(include_untracked=True):
         color = '{BOLD_INTENSE_RED}'
     else:

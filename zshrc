@@ -93,3 +93,6 @@ fi
 #. /Users/pedro/.vim/bundle/powerline/powerline/bindings/zsh/powerline.zsh
 
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
+
+# added by travis gem
+[ -f /Users/pedro/.travis/travis.sh ] && source /Users/pedro/.travis/travis.sh

@@ -35,7 +35,7 @@ Plugin 'racer-rust/vim-racer'
 Plugin 'linkinpark342/xonsh-vim'
 Plugin 'hashivim/vim-vagrant'
 Plugin 'vim-scripts/indentpython.vim'
-
+Plugin 'elmcast/elm-vim'
 
 " Stylistic
 Plugin 'bling/vim-airline' " Nice status bar
@@ -116,6 +116,9 @@ let g:syntastic_python_pylint_args = '--rcfile=~/.pylintrc'
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let python_highlight_all=1
+
+"
+let NERDTreeIgnore = ['\.pyc$']
 
 " YCM Config
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -265,4 +268,10 @@ let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 set timeoutlen=1000 ttimeoutlen=0
 
 let g:vim_json_syntax_conceal = 0
+
+" elm stuff
+let g:elm_format_autosave = 1
+let g:ycm_semantic_triggers = {
+     \ 'elm' : ['.'],
+     \}
 
