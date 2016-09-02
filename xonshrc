@@ -1,3 +1,4 @@
+import subprocess
 from xonsh.environ import current_branch, git_dirty_working_directory
 
 def branch_text():
@@ -10,12 +11,20 @@ def branch_text():
         branch = '{WHITE} (' + color + branch + '{WHITE})'
     return branch
 
+def n(args, stdin=None):
+    $[@(args[1:])]
+    c = 'display notification \"'
+    c += args[0]
+    c += '\" with title \"Terminal\"'
+    $[osascript -e @(c)]
+
 $FORMATTER_DICT['branch_text'] = branch_text
 del branch_text
 
 $PROMPT = '{GREEN}{user} {WHITE}on {INTENSE_RED}{hostname} {WHITE}in {BLUE}{cwd}{branch_text}\n{WHITE}$ {NO_COLOR}'
 aliases['ls'] = ['ls', '--color=auto', '-v']
 aliases['grep'] = ['grep', '--color=auto']
+aliases['n'] = n
 
 $XONSH_COLOR_STYLE = 'monokai'
 

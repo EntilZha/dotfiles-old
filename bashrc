@@ -20,6 +20,8 @@ export PATH="$HOME/.node/bin:$PATH"
 export PATH=$PATH:/Users/pedro/.npm-packages/bin
 export PATH=$PATH:/Users/pedro/Utilities/bin
 export PATH=/usr/local/bin:$PATH
+export PATH=$PATH:/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin
+export PATH="/Users/pedro/anaconda3/bin:$PATH"
 
 export GRAPPA_PREFIX=/Users/pedro/Code/grappa/build/Make+Release/install
 
@@ -41,16 +43,13 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
 
 source ~/.secrets
 source ~/pinafore-openrc.sh
-ssh-add ~/pedro-key.pem
-export DOCKER_TLS_VERIFY="1"
-export DOCKER_HOST="tcp://192.168.99.100:2376"
-export DOCKER_CERT_PATH="/Users/pedro/.docker/machine/machines/dev"
-export DOCKER_MACHINE_NAME="dev"
+ssh-add ~/pedro-key.pem > /dev/null 2>&1
 
 export QB_QUESTION_DB=/Users/pedro/Documents/Code/qb/data/naqt.db
 export QB_GUESS_DB=/Users/pedro/Documents/Code/qb/data/guesses.db
 export QB_ROOT=/Users/pedro/Documents/Code/qb/
 export QB_SPARK_MASTER="spark://terminus.local:7077"
+export QB_AWS_S3_BUCKET="qanta-experiments"
 
 export TF_VAR_key_pair="pedro-key"
 
@@ -113,6 +112,15 @@ docker_rmc() {
 	docker rm $(docker ps -a -q)
 }
 
-
 # added by travis gem
 [ -f /Users/pedro/.travis/travis.sh ] && source /Users/pedro/.travis/travis.sh
+
+# Configure man pages
+export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode - red
+export LESS_TERMCAP_md=$(printf '\e[01;32m') # enter double-bright mode - bold, magenta
+export LESS_TERMCAP_me=$(printf '\e[0m') # turn off all appearance modes (mb, md, so, us)
+export LESS_TERMCAP_se=$(printf '\e[0m') # leave standout mode
+export LESS_TERMCAP_so=$(printf '\e[01;31m') # enter standout mode - yellow
+export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
+export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode - cyan
+

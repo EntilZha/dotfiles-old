@@ -7,7 +7,8 @@
     ]
   "autocomplete-plus-python-jedi":
     completeArguments: false
-  "autocomplete-python": {}
+  "autocomplete-python":
+    pythonPaths: "/usr/local/bin/python3"
   build: {}
   "build-cargo": {}
   core:
@@ -34,12 +35,12 @@
     ]
   editor:
     fontFamily: "Anonymous Pro"
+    fontSize: 13
     invisibles: {}
     preferredLineLength: 100
     scrollPastEnd: true
     showIndentGuide: true
     softWrap: true
-    softWrapAtPreferredLineLength: true
     tabLength: 4
   "exception-reporting":
     userId: "ff16a854-9245-e5f5-f583-8f8d80213bac"

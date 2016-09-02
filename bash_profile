@@ -5,3 +5,6 @@
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/sbin:$PATH
+
+# added by Anaconda3 4.1.1 installer
+export PATH="/Users/pedro/anaconda3/bin:$PATH"
