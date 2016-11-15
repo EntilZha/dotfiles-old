@@ -11,24 +11,22 @@ export PATH=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/bin:
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/Cellar/macvim/7.4-77/bin:$PATH
 export PATH=/Users/pedro/Utilities/activator-1.3.7-minimal:$PATH
-export PATH=/Users/pedro/.cargo/bin:$PATH
 export PATH=$PATH:/Users/pedro/Documents/Code/kenlm/bin
 export PATH=$PATH:/Users/pedro/Utilities/termpdf
 export PATH=/Users/pedro/Library/Android/sdk/platform-tools:$PATH
-export PATH=$PATH:/Users/pedro/Code/cargo-clippy/target/release
 export PATH="$HOME/.node/bin:$PATH"
 export PATH=$PATH:/Users/pedro/.npm-packages/bin
 export PATH=$PATH:/Users/pedro/Utilities/bin
 export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin
 export PATH="/Users/pedro/anaconda3/bin:$PATH"
+export PATH=$PATH:/Users/pedro/.cargo/bin
 
 export GRAPPA_PREFIX=/Users/pedro/Code/grappa/build/Make+Release/install
 
 export CC=clang
 export CXX=clang++
 
-export RUST_SRC_PATH=/Users/pedro/Documents/Code/rust/src/
 export OPENSSL_LIB_DIR=/usr/local/Cellar/openssl/1.0.2f/lib/
 export OPENSSL_INCLUDE_DIR=/usr/local/Cellar/openssl/1.0.2f/include/
 export C_INCLUDE_PATH=/usr/local/Cellar/openssl/1.0.2f/include:$C_INCLUDE_PATH
@@ -43,15 +41,21 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
 
 source ~/.secrets
 source ~/pinafore-openrc.sh
-ssh-add ~/pedro-key.pem > /dev/null 2>&1
+# us west-1 key, don't use for now
+ssh-add ~/.ssh/odc-data.pem > /dev/null 2>&1
+ssh-add ~/pedro-key.pem 2>&1
 
-export QB_QUESTION_DB=/Users/pedro/Documents/Code/qb/data/naqt.db
+export QB_QUESTION_DB=/Users/pedro/Documents/Code/qb/data/internal/non_naqt.db
 export QB_GUESS_DB=/Users/pedro/Documents/Code/qb/data/guesses.db
 export QB_ROOT=/Users/pedro/Documents/Code/qb/
 export QB_SPARK_MASTER="spark://terminus.local:7077"
-export QB_AWS_S3_BUCKET="qanta-experiments"
+export QB_AWS_S3_BUCKET="entilzha-us-west-2"
+export QB_AWS_S3_NAMESPACE="pedro"
+export QB_SECURITY_GROUPS=sg-61314c18
 
 export TF_VAR_key_pair="pedro-key"
+export TF_VAR_qb_aws_s3_bucket="entilzha-us-west-2"
+export TF_VAR_qb_aws_s3_namespace="pedro"
 
 export EC2_HOME=/Users/pedro/Utilities/ec2-api-tools-1.7.5.1
 

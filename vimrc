@@ -107,6 +107,7 @@ if has("gui_macvim")
 endif
 
 colorscheme molokai
+set transparency=7
 
 " Configure python checker
 let g:syntastic_python_checkers = ['pylint']

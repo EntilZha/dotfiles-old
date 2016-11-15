@@ -29,6 +29,7 @@
       ".ipynb_checkpoints"
     ]
     projectHome: "~/Code"
+    telemetryConsent: "no"
     themes: [
       "one-dark-ui"
       "monokai"
@@ -41,6 +42,7 @@
     scrollPastEnd: true
     showIndentGuide: true
     softWrap: true
+    softWrapAtPreferredLineLength: true
     tabLength: 4
   "exception-reporting":
     userId: "ff16a854-9245-e5f5-f583-8f8d80213bac"
@@ -56,13 +58,14 @@
   "linter-pylint":
     executable: "/usr/local/bin/pylint"
     rcFile: "/Users/pedro/.pylintrc"
-  "linter-rust": {}
+  "linter-rust":
+    cargoCommand: "rustc"
   "markdown-preview": {}
   "markdown-preview-plus":
     enableLatexRenderingByDefault: true
     enablePandoc: true
     pandocArguments: [
-      "-V geometry:margin=1in --standalone -s"
+      "--standalone"
     ]
     pandocPath: "/usr/local/bin/pandoc"
     useGitHubStyle: true

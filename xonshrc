@@ -1,5 +1,5 @@
 import subprocess
-from xonsh.environ import current_branch, git_dirty_working_directory
+from xonsh.prompt.vc_branch import current_branch, git_dirty_working_directory
 
 def branch_text():
     branch = current_branch()
