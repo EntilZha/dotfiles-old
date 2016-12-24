@@ -22,6 +22,10 @@ export PATH=$PATH:/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbi
 export PATH="/Users/pedro/anaconda3/bin:$PATH"
 export PATH=$PATH:/Users/pedro/.cargo/bin
 
+export MYPYPATH=$MYPYPATH:~/Documents/Code/PyFunctional
+export MYPYPATH=$MYPYPATH:~/anaconda3/lib/python3.5/site-packages
+export MYPYPATH=$MYPYPATH:~/Utilities/spark-2.0.0-bin-hadoop2.7/python/
+
 export GRAPPA_PREFIX=/Users/pedro/Code/grappa/build/Make+Release/install
 
 export CC=clang
@@ -34,6 +38,7 @@ export C_INCLUDE_PATH=/usr/local/Cellar/openssl/1.0.2f/include:$C_INCLUDE_PATH
 export BOOST_ROOT=/Users/pedro/Utilities/boost_1_60_0
 
 export PYTHONPATH=$PYTHONPATH:~/Code/pelican-plugins:/Users/pedro/Utilities/spark-1.6.1-bin-hadoop2.6/python
+export PYTHONPATH=$PYTHONPATH:~/Code/qb
 
 export PYSPARK_PYTHON=python3
 

@@ -46,7 +46,7 @@ Plugin 'ryanoasis/vim-devicons'
 " Auto completion and snippets
 Plugin 'szw/vim-tags' " ctags support
 Plugin 'Valloric/YouCompleteMe' " Tab autocompletion
-Plugin 'davidhalter/jedi-vim' " Python jedi support
+" Plugin 'davidhalter/jedi-vim' " Python jedi support
 
 " Utility
 Plugin 'scrooloose/nerdcommenter' " Comment code easily
@@ -100,6 +100,9 @@ set nobackup
 set guioptions-=r
 set guioptions-=L
 
+" Enable mouse
+set mouse=a
+
 " Set my color scheme and preferred font
 set guifont=Anonymice\ Powerline\ Nerd\ Font:h11
 if has("gui_macvim")
@@ -112,6 +115,9 @@ set transparency=7
 " Configure python checker
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_python_pylint_args = '--rcfile=~/.pylintrc'
+
+" Configure rust checker
+let g:ycm_rust_src_path = '/Users/pedro/Documents/Code/rust/src'
 
 " Syntastic
 let g:syntastic_check_on_open = 1
@@ -126,6 +132,7 @@ map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " Remap autocomplete to something more natural
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
+let g:ycm_python_binary_path = '/Users/pedro/anaconda3/bin/python'
 
 " Set preview/scratch off
 set completeopt=menu

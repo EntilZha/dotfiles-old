@@ -9,6 +9,7 @@
     completeArguments: false
   "autocomplete-python":
     pythonPaths: "/usr/local/bin/python3"
+    useKite: false
   build: {}
   "build-cargo": {}
   core:
@@ -59,7 +60,7 @@
     executable: "/usr/local/bin/pylint"
     rcFile: "/Users/pedro/.pylintrc"
   "linter-rust":
-    cargoCommand: "rustc"
+    cargoCommand: "check"
   "markdown-preview": {}
   "markdown-preview-plus":
     enableLatexRenderingByDefault: true
