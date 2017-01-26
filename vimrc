@@ -29,7 +29,6 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'elzr/vim-json'
 Plugin 'vim-scripts/SQLComplete.vim'
 Plugin 'derekwyatt/vim-scala'
-Plugin 'rdnetto/YCM-Generator'
 Plugin 'rust-lang/rust.vim'
 Plugin 'racer-rust/vim-racer'
 Plugin 'linkinpark342/xonsh-vim'
@@ -46,7 +45,7 @@ Plugin 'ryanoasis/vim-devicons'
 " Auto completion and snippets
 Plugin 'szw/vim-tags' " ctags support
 Plugin 'Valloric/YouCompleteMe' " Tab autocompletion
-" Plugin 'davidhalter/jedi-vim' " Python jedi support
+Plugin 'davidhalter/jedi-vim' " Python jedi support
 
 " Utility
 Plugin 'scrooloose/nerdcommenter' " Comment code easily
@@ -113,16 +112,20 @@ colorscheme molokai
 set transparency=7
 
 " Configure python checker
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_python_pylint_args = '--rcfile=~/.pylintrc'
+" let g:syntastic_python_checkers = ['pylint']
+" let g:syntastic_python_pylint_args = '--rcfile=~/.pylintrc'
 
 " Configure rust checker
 let g:ycm_rust_src_path = '/Users/pedro/Documents/Code/rust/src'
 
 " Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let python_highlight_all=1
+let g:syntastic_python_checkers = ['python', 'flake8', 'pylint']
 
 "
 let NERDTreeIgnore = ['\.pyc$']
@@ -255,8 +258,6 @@ let g:ycm_filetype_blacklist = {
       \ 'infolog' : 1,
       \ 'mail' : 1,
       \ 'hpp': 1,
-      \ 'python': 1,
-      \ 'py': 1,
 			\ 'cpp': 1}
 
 " Save file when focus is lost

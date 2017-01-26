@@ -88,6 +88,7 @@ alias terminus="ssh pedro@terminus.entilzha.io"
 alias glances="glances -1"
 alias gl="glances -1"
 alias awssh=aws_ssh
+alias s3jupyter="jupyter notebook --config ~/jupyter_s3_config.py"
 
 aws_ssh() {
   ssh -i ~/Downloads/pedro-key.pem "ubuntu@$1"

@@ -22,7 +22,7 @@ $PROMPT_FIELDS['branch_text'] = branch_text
 del branch_text
 
 $PROMPT = '{GREEN}{user} {WHITE}on {INTENSE_RED}{hostname} {WHITE}in {BLUE}{cwd}{branch_text}\n{WHITE}$ {NO_COLOR}'
-aliases['ls'] = ['ls', '--color=auto', '-v']
+aliases['ls'] = ['ls', '-G', '-v']
 aliases['grep'] = ['grep', '--color=auto']
 aliases['n'] = n
 
