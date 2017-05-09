@@ -51,6 +51,7 @@ Plugin 'davidhalter/jedi-vim' " Python jedi support
 Plugin 'scrooloose/nerdcommenter' " Comment code easily
 Plugin 'Raimondi/delimitMate' " Auto add pairing delimiters
 Plugin 'jeffkreeftmeijer/vim-numbertoggle' " Switch line numbering in cmd vs insert mode
+Plugin 'terryma/vim-multiple-cursors'
 
 call vundle#end()
 
@@ -125,7 +126,7 @@ set statusline+=%*
 
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['python', 'flake8', 'pylint']
+let g:syntastic_python_checkers = ['python', 'flake8']
 
 "
 let NERDTreeIgnore = ['\.pyc$']
@@ -239,7 +240,7 @@ let g:LatexBox_latexmk_options = "-pvc -pdfps"
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-nnoremap <C-N> :NERDTreeToggle<CR>
+nnoremap <Leader>d :NERDTreeToggle<CR>
 
 " Start vim with file focused instead of nerdtree
 autocmd VimEnter * wincmd p

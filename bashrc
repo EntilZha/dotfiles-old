@@ -1,16 +1,25 @@
-SCALA_HOME=/usr/local/share/scala-2.11.0
 EDITOR=mvim
 
-export GOPATH=$HOME/Code/go
-unset GOROOT
+function git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* (*\([^)]*\))*/\1/'
+}
+
+function markup_git_branch {
+  if [[ -n $@ ]]; then
+    if [[ -z $(git status --porcelain 2> /dev/null | tail -n1) ]]; then
+      echo -e " \001\033[32m\002($@)\001\033[0m\002"
+    else
+      echo -e " \001\033[31m\002($@)\001\033[0m\002"
+    fi
+  fi
+}
+
+export PS1="\[\033[38;5;40m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\] on \[$(tput sgr0)\]\[\033[38;5;9m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] at \[$(tput sgr0)\]\[\033[38;5;14m\]\A\[$(tput sgr0)\]\[\033[38;5;15m\] in \[$(tput sgr0)\]\[\033[38;5;12m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]\$(markup_git_branch \$(git_branch))\n\\$ \[$(tput sgr0)\]"
 
 export PATH=$(/usr/local/bin/brew --prefix coreutils)/libexec/gnubin:$PATH
-export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export PATH=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
-export PATH=/usr/local/Cellar/macvim/7.4-77/bin:$PATH
-export PATH=/Users/pedro/Utilities/activator-1.3.7-minimal:$PATH
 export PATH=$PATH:/Users/pedro/Documents/Code/kenlm/bin
 export PATH=$PATH:/Users/pedro/Utilities/termpdf
 export PATH=/Users/pedro/Library/Android/sdk/platform-tools:$PATH
@@ -21,12 +30,12 @@ export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin
 export PATH="/Users/pedro/anaconda3/bin:$PATH"
 export PATH=$PATH:/Users/pedro/.cargo/bin
+export PATH=$PATH:/Users/pedro/Code/chunkwm/bin
+export PATH=$PATH:/Users/pedro/Code/chunkwm/src/chunkc/bin
 
 export MYPYPATH=$MYPYPATH:~/Documents/Code/PyFunctional
-export MYPYPATH=$MYPYPATH:~/anaconda3/lib/python3.5/site-packages
-export MYPYPATH=$MYPYPATH:~/Utilities/spark-2.0.0-bin-hadoop2.7/python/
 
-export GRAPPA_PREFIX=/Users/pedro/Code/grappa/build/Make+Release/install
+export SCALA_HOME=/usr/local/share/scala-2.11.0
 
 export CC=clang
 export CXX=clang++
@@ -37,7 +46,7 @@ export C_INCLUDE_PATH=/usr/local/Cellar/openssl/1.0.2f/include:$C_INCLUDE_PATH
 
 export BOOST_ROOT=/Users/pedro/Utilities/boost_1_60_0
 
-export PYTHONPATH=$PYTHONPATH:~/Code/pelican-plugins:/Users/pedro/Utilities/spark-1.6.1-bin-hadoop2.6/python
+export PYTHONPATH=$PYTHONPATH:~/Code/pelican-plugins
 export PYTHONPATH=$PYTHONPATH:~/Code/qb
 
 export PYSPARK_PYTHON=python3
@@ -46,23 +55,19 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
 
 source ~/.secrets
 source ~/pinafore-openrc.sh
-# us west-1 key, don't use for now
-ssh-add ~/.ssh/odc-data.pem > /dev/null 2>&1
-ssh-add ~/pedro-key.pem 2>&1
+ssh-add ~/pedro-key.pem 2>/dev/null
+ssh-add ~/eos_id_rsa 2>/dev/null
 
-export QB_QUESTION_DB=/Users/pedro/Documents/Code/qb/data/internal/non_naqt.db
-export QB_GUESS_DB=/Users/pedro/Documents/Code/qb/data/guesses.db
+export QB_QUESTION_DB=/Users/pedro/Documents/Code/qb/data/internal/naqt.db
 export QB_ROOT=/Users/pedro/Documents/Code/qb/
 export QB_SPARK_MASTER="spark://terminus.local:7077"
 export QB_AWS_S3_BUCKET="entilzha-us-west-2"
 export QB_AWS_S3_NAMESPACE="pedro"
-export QB_SECURITY_GROUPS=sg-61314c18
+export QB_SECURITY_GROUPS=sg-feab8f86
 
 export TF_VAR_key_pair="pedro-key"
 export TF_VAR_qb_aws_s3_bucket="entilzha-us-west-2"
 export TF_VAR_qb_aws_s3_namespace="pedro"
-
-export EC2_HOME=/Users/pedro/Utilities/ec2-api-tools-1.7.5.1
 
 export TERM=xterm-256color
 
@@ -75,8 +80,6 @@ alias home="cd ~"
 alias h="cd ~"
 alias hsearch="history | grep"
 alias py="ipython"
-alias pyi="ipython -i"
-alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias known-rm="rm ~/.ssh/known_hosts"
 alias sudo="sudo -E"
 alias skim="open -a Skim"
@@ -89,10 +92,8 @@ alias glances="glances -1"
 alias gl="glances -1"
 alias awssh=aws_ssh
 alias s3jupyter="jupyter notebook --config ~/jupyter_s3_config.py"
-
-aws_ssh() {
-  ssh -i ~/Downloads/pedro-key.pem "ubuntu@$1"
-}
+alias ls="ls --color=auto"
+alias grep="grep --color=auto"
 
 tar_compress() {
 	tar -zcvf $1.tar.gz $1
@@ -106,6 +107,8 @@ alias tarc=tar_compress
 alias tard=tar_decompress
 
 alias svim="sudo -E vim"
+
+source ~/git-completion.bash
 
 markdown() {
 	file=$1

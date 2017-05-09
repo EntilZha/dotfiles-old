@@ -3,6 +3,8 @@ from xonsh.prompt.vc import current_branch, git_dirty_working_directory
 
 def branch_text():
     branch = current_branch()
+    if branch == '<branch-timeout>':
+        return ''
     if git_dirty_working_directory(include_untracked=True):
         color = '{BOLD_INTENSE_RED}'
     else:
@@ -22,9 +24,10 @@ $PROMPT_FIELDS['branch_text'] = branch_text
 del branch_text
 
 $PROMPT = '{GREEN}{user} {WHITE}on {INTENSE_RED}{hostname} {WHITE}in {BLUE}{cwd}{branch_text}\n{WHITE}$ {NO_COLOR}'
-aliases['ls'] = ['ls', '-G', '-v']
+aliases['ls'] = ['ls', '--color=auto']
 aliases['grep'] = ['grep', '--color=auto']
 aliases['n'] = n
 
 $XONSH_COLOR_STYLE = 'monokai'
+$SUPPRESS_BRANCH_TIMEOUT_MESSAGE = True
 
