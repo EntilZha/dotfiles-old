@@ -2,7 +2,7 @@
 filetype off
 set nocompatible
 set rtp+=~/.vim/bundle/Vundle.vim
-set shell=zsh
+set shell=bash
 call vundle#begin()
 
 " Framework Vim
@@ -35,6 +35,7 @@ Plugin 'linkinpark342/xonsh-vim'
 Plugin 'hashivim/vim-vagrant'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'elmcast/elm-vim'
+Plugin 'dag/vim-fish'
 
 " Stylistic
 Plugin 'bling/vim-airline' " Nice status bar
@@ -78,8 +79,9 @@ let mapleader=","
 set foldenable
 nnoremap <leader>ft Vatzf
 
-" Easier vertical split
+" Easier horizontal vertical split
 nnoremap <leader>v <C-w>v<C-w>l
+nnoremap <leader>h <C-w>n<C-w>l
 
 " Default tabstop and shiftwidth
 set tabstop=2 shiftwidth=2
@@ -227,10 +229,6 @@ autocmd FileType gitcommit setlocal spell
 " Configure LaTeX-Box
 let g:LatexBox_latexmk_preview_continuously = 1
 let g:LatexBox_quickfix = 4
-
-" Unhighlight
-nnoremap <Leader>hh :nohl<cr>
-nnoremap <Leader>hn :hl<cr>
 
 " Configure LaTeX-Box
 let g:LatexBox_latexmk_options = "-pvc -pdfps"
