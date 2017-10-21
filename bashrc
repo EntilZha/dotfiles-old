@@ -53,12 +53,12 @@ export QB_QUESTION_DB=/Users/pedro/Documents/Code/qb/data/internal/naqt.db
 export QB_ROOT=/Users/pedro/Documents/Code/qb/
 export QB_SPARK_MASTER="spark://terminus.local:7077"
 export QB_AWS_S3_BUCKET="entilzha-us-west-2"
-export QB_AWS_S3_NAMESPACE="atlanta-new-ingestion"
+export QB_AWS_S3_NAMESPACE="journal-paper"
 export QB_SECURITY_GROUPS=sg-feab8f86
 
 export TF_VAR_key_pair="pedro-key"
 export TF_VAR_qb_aws_s3_bucket="entilzha-us-west-2"
-export TF_VAR_qb_aws_s3_namespace="atlanta-new-ingestion"
+export TF_VAR_qb_aws_s3_namespace="journal-paper"
 
 export TERM=xterm-256color
 

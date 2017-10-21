@@ -2,6 +2,7 @@
 filetype off
 set nocompatible
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=/usr/local/opt/fzf
 set shell=bash
 call vundle#begin()
 
@@ -9,9 +10,10 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Search, File Directories...
-Plugin 'ctrlpvim/ctrlp.vim' " Fuzzy finder search
+Plugin 'junegunn/fzf.vim'
 Plugin 'scrooloose/nerdtree' " File navigation tree
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'tpope/vim-unimpaired'
 
 " Buffer plugins
 Plugin 'rbgrouleff/bclose.vim' " Close buffers without closing window
@@ -19,7 +21,7 @@ Plugin 'bufkill.vim'
 Plugin 'jlanzarotta/bufexplorer' " Better buffer explorer
 
 " Language Support
-Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 Plugin 'pangloss/vim-javascript'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
@@ -34,14 +36,13 @@ Plugin 'racer-rust/vim-racer'
 Plugin 'linkinpark342/xonsh-vim'
 Plugin 'hashivim/vim-vagrant'
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'elmcast/elm-vim'
 Plugin 'dag/vim-fish'
 
 " Stylistic
-Plugin 'bling/vim-airline' " Nice status bar
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'airblade/vim-gitgutter' " Git visual support
-Plugin 'ryanoasis/vim-devicons'
+Plugin 'jacoborus/tender.vim'
+Plugin 'itchyny/lightline.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
 
 " Auto completion and snippets
 Plugin 'szw/vim-tags' " ctags support
@@ -52,7 +53,6 @@ Plugin 'davidhalter/jedi-vim' " Python jedi support
 Plugin 'scrooloose/nerdcommenter' " Comment code easily
 Plugin 'Raimondi/delimitMate' " Auto add pairing delimiters
 Plugin 'jeffkreeftmeijer/vim-numbertoggle' " Switch line numbering in cmd vs insert mode
-Plugin 'terryma/vim-multiple-cursors'
 
 call vundle#end()
 
@@ -106,31 +106,16 @@ set guioptions-=L
 set mouse=a
 
 " Set my color scheme and preferred font
-set guifont=Anonymice\ Powerline\ Nerd\ Font:h11
+set guifont=Menlo\ For\ Powerline:h12
 if has("gui_macvim")
-  set guifont=Anonymice\ Powerline\ Nerd\ Font:h12
+  set guifont=Menlo\ For\ Powerline:h12
 endif
 
-colorscheme molokai
-set transparency=7
-
-" Configure python checker
-" let g:syntastic_python_checkers = ['pylint']
-" let g:syntastic_python_pylint_args = '--rcfile=~/.pylintrc'
+colorscheme tender
 
 " Configure rust checker
 let g:ycm_rust_src_path = '/Users/pedro/Documents/Code/rust/src'
 
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['python', 'flake8']
-
-"
 let NERDTreeIgnore = ['\.pyc$']
 
 " YCM Config
@@ -139,9 +124,20 @@ map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
 let g:ycm_python_binary_path = '/Users/pedro/anaconda3/bin/python'
+let g:loaded_python_provider = 1
+let g:python3_host_prog = '/Users/pedro/anaconda3/bin/python'
 
 " Set preview/scratch off
 set completeopt=menu
+
+" GitGutter styling to use · instead of +/-
+let g:gitgutter_sign_added = '∙'
+let g:gitgutter_sign_modified = '∙'
+let g:gitgutter_sign_removed = '∙'
+let g:gitgutter_sign_modified_removed = '∙'
+
+let g:ale_sign_warning = '▲'
+let g:ale_sign_error = '✗'
 
 " Let me have command autocomplete like in bash
 set wildmenu
@@ -169,19 +165,8 @@ autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " Enable list of buffers and show only filename
-" python from powerline.vim import setup as powerline_setup
-" python powerline_setup()
-" python del powerline_setup
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
 set laststatus=2
 set noshowmode
-
-" Enable short cuts for switching buffers
-nnoremap <Leader>bn :bnext<cr>
-nnoremap <Leader>bp :bprevious<cr>
-nnoremap <C-Tab> :bnext<cr>
-nnoremap <C-S-Tab> :bprevious<cr>
 
 " Hotkey for closing a buffer
 nnoremap <Leader>bc :Bclose<cr>
@@ -238,13 +223,12 @@ let g:LatexBox_latexmk_options = "-pvc -pdfps"
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-nnoremap <Leader>d :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 
 " Start vim with file focused instead of nerdtree
 autocmd VimEnter * wincmd p
 autocmd VimEnter * if (line('$') == 1 && getline(1) == '') | wincmd p | endif
 
-" Disable YCM for C/C++ for Grappa project
 let g:ycm_filetype_blacklist = {
       \ 'tagbar' : 1,
       \ 'qf' : 1,
@@ -277,9 +261,52 @@ set timeoutlen=1000 ttimeoutlen=0
 
 let g:vim_json_syntax_conceal = 0
 
-" elm stuff
-let g:elm_format_autosave = 1
-let g:ycm_semantic_triggers = {
-     \ 'elm' : ['.'],
-     \}
+nmap ; :Buffers<CR>
+nmap <Leader>t :Files<CR>
+nmap <Leader>r :Tags<CR>
 
+let g:lightline = {
+\ 'active': {
+\   'left': [['mode', 'paste'], ['filename', 'modified']],
+\   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
+\ },
+\ 'component_expand': {
+\   'linter_warnings': 'LightlineLinterWarnings',
+\   'linter_errors': 'LightlineLinterErrors',
+\   'linter_ok': 'LightlineLinterOK'
+\ },
+\ 'component_type': {
+\   'linter_warnings': 'warning',
+\   'linter_errors': 'error'
+\ }
+\ }
+
+function! LightlineLinterWarnings() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '' : printf('%d ◆', all_non_errors)
+endfunction
+
+function! LightlineLinterErrors() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '' : printf('%d ✗', all_errors)
+endfunction
+
+function! LightlineLinterOK() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '✓ ' : ''
+endfunction
+
+autocmd User ALELint call s:MaybeUpdateLightline()
+
+" Update and show lightline but only if it's visible (e.g., not in Goyo)
+function! s:MaybeUpdateLightline()
+  if exists('#lightline')
+    call lightline#update()
+  end
+endfunction
