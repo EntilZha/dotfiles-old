@@ -53,6 +53,7 @@ Plugin 'davidhalter/jedi-vim' " Python jedi support
 Plugin 'scrooloose/nerdcommenter' " Comment code easily
 Plugin 'Raimondi/delimitMate' " Auto add pairing delimiters
 Plugin 'jeffkreeftmeijer/vim-numbertoggle' " Switch line numbering in cmd vs insert mode
+Plugin 'easymotion/vim-easymotion'
 
 call vundle#end()
 
