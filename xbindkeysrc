@@ -1,0 +1,16 @@
+"amixer set Master 5%+"
+  Mod2 + F12
+"amixer set Master 5%-"
+  Mod2 + F11
+
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+  Mod2 + F8
+
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+  Mod2 + F10
+
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+  Mod2 + F9
+
+"xscreensaver-command --lock"
+  Shift+Mod2+Mod4 + l

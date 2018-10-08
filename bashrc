@@ -1,82 +1,52 @@
-EDITOR=mvim
+#
+# ~/.bashrc
+#
 
-function git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* (*\([^)]*\))*/\1/'
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+export TERM=xterm-256color
+export VISUAL=vim
+export EDITOR=vim
+
+alias ls='ls --color=auto'
+alias grep="grep --color=auto"
+function tpdf() {
+  pdftotext $1 /dev/stdout | less
 }
 
-function markup_git_branch {
-  if [[ -n $@ ]]; then
-    if [[ -z $(git status --porcelain 2> /dev/null | tail -n1) ]]; then
-      echo -e " \001\033[32m\002($@)\001\033[0m\002"
-    else
-      echo -e " \001\033[31m\002($@)\001\033[0m\002"
-    fi
-  fi
-}
-
-export PS1="\[\033[38;5;40m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\] on \[$(tput sgr0)\]\[\033[38;5;9m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\] at \[$(tput sgr0)\]\[\033[38;5;14m\]\A\[$(tput sgr0)\]\[\033[38;5;15m\] in \[$(tput sgr0)\]\[\033[38;5;12m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]\$(markup_git_branch \$(git_branch))\n\\$ \[$(tput sgr0)\]"
-
-export PATH=$(/usr/local/bin/brew --prefix coreutils)/libexec/gnubin:$PATH
-export PATH="$HOME/.node/bin:$PATH"
-export PATH=$PATH:/Users/pedro/.npm-packages/bin
-export PATH=$PATH:/Users/pedro/Utilities/bin
-export PATH=/usr/local/bin:$PATH
-export PATH=$PATH:/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin
-export PATH="/Users/pedro/anaconda3/bin:$PATH"
-export PATH=$PATH:/Users/pedro/.cargo/bin
-
-export SCALA_HOME=/usr/local/share/scala-2.11.0
-
-export CC=clang
-export CXX=clang++
-
-export OPENSSL_LIB_DIR=/usr/local/Cellar/openssl/1.0.2f/lib/
-export OPENSSL_INCLUDE_DIR=/usr/local/Cellar/openssl/1.0.2f/include/
-export C_INCLUDE_PATH=/usr/local/Cellar/openssl/1.0.2f/include:$C_INCLUDE_PATH
-
-export BOOST_ROOT=/Users/pedro/Utilities/boost_1_60_0
-
-export PYTHONPATH=$PYTHONPATH:~/Code/pelican-plugins
-export PYTHONPATH=$PYTHONPATH:~/Code/qb
-export PYTHONPATH=$PYTHONPATH:/Users/pedro/Utilities/spark-2.1.1-bin-hadoop2.7/python
-
-export PYSPARK_PYTHON=python3
-
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
-
+# Source other files
 source ~/.secrets
-source ~/pinafore-openrc.sh
-ssh-add ~/pedro-key.pem 2>/dev/null
-ssh-add ~/eos_id_rsa 2>/dev/null
 
-export QB_QUESTION_DB=/Users/pedro/Documents/Code/qb/data/internal/naqt.db
-export QB_ROOT=/Users/pedro/Documents/Code/qb/
-export QB_SPARK_MASTER="spark://terminus.local:7077"
+# Modify Paths
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/cuda:/opt/cuda/lib64:/opt/cuda/extras/CUPTI/lib64
+export CUDA_HOME=/opt/cuda
+
+export PYTHONPATH=$PYTHONPATH:/home/entilzha/code/qb
+export PYTHONPATH=$PYTHONPATH:/home/entilzha/software/spark-2.2.0-bin-hadoop2.7/python
+export PYTHONPATH=$PYTHONPATH:/home/entilzha/applications/pycharm-2017.1.2/debug-eggs/pycharm-debug.egg
+
+export PATH=$PATH:/home/entilzha/.cargo/bin:/home/entilzha/bin
+
+# Application Specific Configs
+export QB_ROOT=/home/entilzha/code/qb
+export QB_SPARK_MASTER=spark://nibel:7077
 export QB_AWS_S3_BUCKET="entilzha-us-west-2"
-export QB_AWS_S3_NAMESPACE="journal-paper"
-export QB_SECURITY_GROUPS=sg-feab8f86
+export QB_AWS_S3_NAMESPACE="atlanta-word-expo"
 
 export TF_VAR_key_pair="pedro-key"
 export TF_VAR_qb_aws_s3_bucket="entilzha-us-west-2"
-export TF_VAR_qb_aws_s3_namespace="journal-paper"
+export TF_VAR_qb_aws_s3_namespace="atlanta-word-expo"
 
-export TERM=xterm-256color
+# SSH Agent
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent | head -n 2 > ~/.ssh-agent-thing
+fi
+if [[ "$SSH_AGENT_PID" == "" ]]; then
+    eval "$(<~/.ssh-agent-thing)"
+fi
 
-alias sudo="sudo -E"
-alias skim="open -a Skim"
-alias pycharm="/Applications/PyCharm\ CE.app/Contents/MacOS/pycharm"
-alias publish-blog="pelican content -o output -s publishconf.py && ghp-import -b master -m 'Updated website' output"
-alias s3jupyter="jupyter notebook --config ~/jupyter_s3_config.py"
+ssh-add ~/.ssh/pedro-key.pem 2> /dev/null
 
-# added by travis gem
-[ -f /Users/pedro/.travis/travis.sh ] && source /Users/pedro/.travis/travis.sh
-
-# Configure man pages
-export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode - red
-export LESS_TERMCAP_md=$(printf '\e[01;32m') # enter double-bright mode - bold, magenta
-export LESS_TERMCAP_me=$(printf '\e[0m') # turn off all appearance modes (mb, md, so, us)
-export LESS_TERMCAP_se=$(printf '\e[0m') # leave standout mode
-export LESS_TERMCAP_so=$(printf '\e[01;31m') # enter standout mode - yellow
-export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
-export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode - cyan
+exec fish
 
