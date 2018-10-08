@@ -1,0 +1,24 @@
+# Maintainer: Pedro Rodriguez <pedro@entilzha.io>
+pkgname=xmobar-utils
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="xmobar utilities for standard input"
+arch=('x86_64')
+url="https://github.com/EntilZha/dotfiles/tree/master/xmobar-utils"
+license=('MIT')
+depends=('python')
+source=(
+    "mobaralsa.py"
+    "mobarping.py"
+    "mobargpustat"
+)
+md5sums=('5c1f7c34f9d8cc66e313ef3a1d6cdee3'
+         '6e396a06f8d8eb04372e50d71c139275'
+         '20059ea827fae1914a25454e2bd4bc56')
+
+package() {
+  mkdir -p "${pkgdir}/usr/bin"
+  cp mobaralsa.py "${pkgdir}/usr/bin"
+  cp mobarping.py "${pkgdir}/usr/bin"
+  cp mobargpustat "${pkgdir}/usr/bin"
+}
