@@ -7,7 +7,7 @@ call plug#begin('~/.vim/plugged')
 " Search, File Directories...
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim' " Fuzzy finder search
-Plug 'scrooloose/nerdtree' " File navigation tree
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-unimpaired'
 
@@ -29,8 +29,9 @@ Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'vim-scripts/SQLComplete.vim', {'for': 'sql'}
 Plug 'rust-lang/rust.vim', {'for': 'rs'}
 Plug 'racer-rust/vim-racer', {'for': 'rs'}
-Plug 'vim-scripts/indentpython.vim'
+Plug 'vim-scripts/indentpython.vim', {'for': 'py'}
 Plug 'dag/vim-fish', {'for': 'fish'}
+Plug 'Glench/Vim-Jinja2-Syntax', {'for': ['py', 'jinja', 'jinja2', 'html']}
 
 " Stylistic
 Plug 'jacoborus/tender.vim'
@@ -49,7 +50,6 @@ Plug 'SirVer/ultisnips'
 Plug 'scrooloose/nerdcommenter' " Comment code easily
 Plug 'jiangmiao/auto-pairs' " Auto add pairing delimiters
 Plug 'tmhedberg/SimpylFold' " Code folding
-Plug 'easymotion/vim-easymotion'
 Plug 'majutsushi/tagbar'
 call plug#end()
 
@@ -58,7 +58,9 @@ filetype plugin indent on
 set encoding=utf-8
 set showcmd
 set foldlevel=3
+set t_Co=256
 set term=xterm-256color
+let &t_ut=''
 
 " Configure line number stuff
 set number
@@ -89,6 +91,7 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+set tags=/home/entilzha/tags,./tags,tags;
 
 " Disable backup and swapfile
 set noswapfile
@@ -108,9 +111,11 @@ set guioptions-=m
 set guioptions-=T
 set guioptions-=r
 
+if (has("termguicolors"))
+  set termguicolors
+endif
 colorscheme tender
 
-"
 let NERDTreeIgnore = ['\.pyc$']
 
 " YCM Config
