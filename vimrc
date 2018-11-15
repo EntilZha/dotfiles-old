@@ -1,11 +1,11 @@
 " Setup Vundle
 filetype off
 set nocompatible
-set rtp+=/usr/bin/fzf
 set shell=bash
 call plug#begin('~/.vim/plugged')
 
 " Search, File Directories...
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim' " Fuzzy finder search
 Plug 'scrooloose/nerdtree' " File navigation tree
 Plug 'jistr/vim-nerdtree-tabs'
