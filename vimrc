@@ -43,12 +43,14 @@ Plug 'mhinz/vim-startify'
 Plug 'szw/vim-tags' " ctags support
 Plug 'Valloric/YouCompleteMe' " Tab autocompletion
 Plug 'davidhalter/jedi-vim' " Python jedi support
+Plug 'SirVer/ultisnips'
 
 " Utility
 Plug 'scrooloose/nerdcommenter' " Comment code easily
 Plug 'jiangmiao/auto-pairs' " Auto add pairing delimiters
 Plug 'tmhedberg/SimpylFold' " Code folding
 Plug 'easymotion/vim-easymotion'
+Plug 'majutsushi/tagbar'
 call plug#end()
 
 syntax on
@@ -113,9 +115,6 @@ let NERDTreeIgnore = ['\.pyc$']
 
 " YCM Config
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" Remap autocomplete to something more natural
-inoremap <C-Space> <C-x><C-o>
-inoremap <C-@> <C-Space>
 
 " GitGutter styling to use · instead of +/-
 let g:gitgutter_sign_added = '∙'
@@ -194,13 +193,6 @@ let g:pandoc#folding#level = 4
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd FileType gitcommit setlocal spell
 
-" Configure LaTeX-Box
-let g:LatexBox_latexmk_preview_continuously = 1
-let g:LatexBox_quickfix = 4
-
-" Configure LaTeX-Box
-let g:LatexBox_latexmk_options = "-pvc -pdfps"
-
 " Auto open nerdtree and close when its the only thing left
 " autocmd vimenter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -209,6 +201,23 @@ nnoremap <C-N> :NERDTreeToggle<CR>
 " Start vim with file focused instead of nerdtree
 autocmd VimEnter * wincmd p
 autocmd VimEnter * if (line('$') == 1 && getline(1) == '') | wincmd p | endif
+
+" latex
+let g:vimtex_view_method = "zathura"
+let g:vimtex_compiler_latexmk = {
+        \ 'backend' : 'jobs',
+        \ 'background' : 1,
+        \ 'build_dir' : '',
+        \ 'callback' : 1,
+        \ 'continuous' : 1,
+        \ 'executable' : 'latexmk',
+        \ 'options' : [
+        \   '-verbose',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+        \   '-xelatex'
+        \ ]}
 
 " Disable YCM for C/C++ for Grappa project
 let g:ycm_filetype_blacklist = {
@@ -238,6 +247,7 @@ au InsertLeave * silent execute "!echo -en \<esc>[2 q"
 nmap ' :Buffers<CR>
 nmap <Leader>f :Files<CR>
 nmap <Leader>t :Tags<CR>
+nmap <F4> :TagbarToggle<CR>
 
 let g:lightline = {
       \ 'colorscheme': 'wombat',

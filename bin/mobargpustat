@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+import subprocess
+import json
+
+
+COMMAND = 'gpustat --json'
+
+
+def main():
+    result = subprocess.run(COMMAND, shell=True, stdout=subprocess.PIPE)
+    data = json.loads(result.stdout.decode('utf8'))['gpus'][0]
+    temp = data['temperature.gpu']
+    load = data['utilization.gpu']
+    mem_used = data['memory.used']
+    mem_total = data['memory.total']
+    print(f'GPU: {load}% {mem_used}/{mem_total} MB {temp}°C')
+
+
+
+if __name__ == '__main__':
+    main()
