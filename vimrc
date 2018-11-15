@@ -44,6 +44,7 @@ Plug 'szw/vim-tags' " ctags support
 Plug 'Valloric/YouCompleteMe' " Tab autocompletion
 Plug 'davidhalter/jedi-vim' " Python jedi support
 Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " Utility
 Plug 'scrooloose/nerdcommenter' " Comment code easily
@@ -58,7 +59,6 @@ filetype plugin indent on
 set encoding=utf-8
 set showcmd
 set foldlevel=3
-set term=xterm-256color
 
 " Configure line number stuff
 set number
@@ -97,7 +97,14 @@ set nobackup
 " Set gui options
 set guioptions-=r
 set guioptions-=L
-set guiheadroom=0
+
+if has('nvim')
+  " Neovim specific commands
+else
+  " Standard vim specific commands
+  set guiheadroom=0
+  set term=xterm-256color
+endif
 
 " Enable mouse
 set mouse=a
@@ -111,7 +118,16 @@ set guioptions-=r
 colorscheme tender
 
 "
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = [
+      \'\.pyc$',
+      \'\.aux$',
+      \'\.bbl$',
+      \'\.blg$',
+      \'\.out$',
+      \'\.fls$',
+      \'\.fdb_latexmk$',
+      \'\.synctex\.gz$'
+      \]
 
 " YCM Config
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
