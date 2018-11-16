@@ -7,9 +7,8 @@ call plug#begin('~/.vim/plugged')
 " Search, File Directories...
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim' " Fuzzy finder search
-Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-unimpaired'
+Plug 'francoiscabrol/ranger.vim'
 
 " Buffer plugins
 Plug 'rbgrouleff/bclose.vim' " Close buffers without closing window
@@ -124,17 +123,6 @@ if (has("termguicolors"))
 endif
 colorscheme tender
 
-let NERDTreeIgnore = [
-      \'\.pyc$',
-      \'\.aux$',
-      \'\.bbl$',
-      \'\.blg$',
-      \'\.out$',
-      \'\.fls$',
-      \'\.fdb_latexmk$',
-      \'\.synctex\.gz$'
-      \]
-
 " YCM Config
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
@@ -215,15 +203,6 @@ let g:pandoc#folding#level = 4
 " Set spell check for markdown
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd FileType gitcommit setlocal spell
-
-" Auto open nerdtree and close when its the only thing left
-" autocmd vimenter * NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-nnoremap <C-N> :NERDTreeToggle<CR>
-
-" Start vim with file focused instead of nerdtree
-autocmd VimEnter * wincmd p
-autocmd VimEnter * if (line('$') == 1 && getline(1) == '') | wincmd p | endif
 
 " latex
 let g:vimtex_view_method = "zathura"
