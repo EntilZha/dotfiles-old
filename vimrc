@@ -42,7 +42,7 @@ Plug 'mhinz/vim-startify'
 " Auto completion and snippets
 Plug 'szw/vim-tags' " ctags support
 Plug 'Valloric/YouCompleteMe' " Tab autocompletion
-Plug 'davidhalter/jedi-vim', {'for': 'py'} " Python jedi support
+Plug 'davidhalter/jedi-vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
