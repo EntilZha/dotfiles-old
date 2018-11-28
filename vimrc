@@ -9,6 +9,7 @@ Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim' " Fuzzy finder search
 Plug 'tpope/vim-unimpaired'
 Plug 'francoiscabrol/ranger.vim'
+Plug 'scrooloose/nerdtree', {'on':  'NERDTreeToggle'}
 
 " Buffer plugins
 Plug 'rbgrouleff/bclose.vim' " Close buffers without closing window
@@ -126,6 +127,7 @@ colorscheme tender
 " Ranger hotkey
 let g:ranger_map_keys = 0
 map <leader>r :RangerWorkingDirectory<CR>
+map <C-n> :NERDTreeToggle<CR>
 
 " YCM Config
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
