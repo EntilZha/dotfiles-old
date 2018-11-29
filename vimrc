@@ -29,7 +29,7 @@ Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'vim-scripts/SQLComplete.vim', {'for': 'sql'}
 Plug 'rust-lang/rust.vim', {'for': 'rs'}
 Plug 'racer-rust/vim-racer', {'for': 'rs'}
-Plug 'vim-scripts/indentpython.vim', {'for': 'py'}
+Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'dag/vim-fish', {'for': 'fish'}
 Plug 'Glench/Vim-Jinja2-Syntax', {'for': ['py', 'jinja', 'jinja2', 'html']}
 
@@ -43,7 +43,6 @@ Plug 'mhinz/vim-startify'
 " Auto completion and snippets
 Plug 'szw/vim-tags' " ctags support
 Plug 'Valloric/YouCompleteMe' " Tab autocompletion
-Plug 'davidhalter/jedi-vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
