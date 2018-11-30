@@ -136,6 +136,7 @@ let g:gitgutter_sign_added = '∙'
 let g:gitgutter_sign_modified = '∙'
 let g:gitgutter_sign_removed = '∙'
 let g:gitgutter_sign_modified_removed = '∙'
+let g:startify_change_to_dir = 0
 
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
