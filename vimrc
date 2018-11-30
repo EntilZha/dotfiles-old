@@ -41,18 +41,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-startify'
 
 " Auto completion and snippets
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'Valloric/YouCompleteMe'
 
 " Utility
 Plug 'scrooloose/nerdcommenter' " Comment code easily
@@ -136,11 +125,7 @@ let g:ranger_map_keys = 0
 map <leader>r :RangerWorkingDirectory<CR>
 map <C-n> :NERDTreeToggle<CR>
 
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'python': ['/usr/bin/pyls'],
-    \ }
-let g:deoplete#enable_at_startup = 1
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " GitGutter styling to use · instead of +/-
 let g:gitgutter_sign_added = '∙'
