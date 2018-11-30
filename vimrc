@@ -41,10 +41,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-startify'
 
 " Auto completion and snippets
-Plug 'szw/vim-tags' " ctags support
-Plug 'Valloric/YouCompleteMe' " Tab autocompletion
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 
 " Utility
 Plug 'scrooloose/nerdcommenter' " Comment code easily
@@ -128,8 +131,11 @@ let g:ranger_map_keys = 0
 map <leader>r :RangerWorkingDirectory<CR>
 map <C-n> :NERDTreeToggle<CR>
 
-" YCM Config
-map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'python': ['/usr/bin/pyls'],
+    \ }
+let g:deoplete#enable_at_startup = 1
 
 " GitGutter styling to use · instead of +/-
 let g:gitgutter_sign_added = '∙'
@@ -139,9 +145,6 @@ let g:gitgutter_sign_modified_removed = '∙'
 
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
-
-let g:jedi#rename_command = ""
-let g:jedi#completions_enabled = 0
 
 " Set preview/scratch off
 set completeopt=menu
@@ -225,19 +228,6 @@ let g:vimtex_compiler_latexmk = {
         \   '-interaction=nonstopmode',
         \   '-xelatex'
         \ ]}
-
-" Disable YCM for C/C++ for Grappa project
-let g:ycm_filetype_blacklist = {
-      \ 'tagbar' : 1,
-      \ 'qf' : 1,
-      \ 'notes' : 1,
-      \ 'markdown' : 1,
-      \ 'unite' : 1,
-      \ 'text' : 1,
-      \ 'vimwiki' : 1,
-      \ 'pandoc' : 1,
-      \ 'infolog' : 1,
-      \ 'mail' : 1}
 
 " Save file when focus is lost
 autocmd BufLeave,FocusLost * wall
