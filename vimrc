@@ -126,6 +126,7 @@ map <leader>r :RangerWorkingDirectory<CR>
 map <C-n> :NERDTreeToggle<CR>
 
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_semantic_triggers = { 'python': [ 're!\w{2}' ] }
 
 " GitGutter styling to use · instead of +/-
 let g:gitgutter_sign_added = '∙'
