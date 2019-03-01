@@ -10,6 +10,7 @@ Plug 'junegunn/fzf.vim' " Fuzzy finder search
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-unimpaired'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Buffer plugins
 Plug 'rbgrouleff/bclose.vim' " Close buffers without closing window
@@ -32,6 +33,8 @@ Plug 'racer-rust/vim-racer', {'for': 'rs'}
 Plug 'vim-scripts/indentpython.vim', {'for': 'py'}
 Plug 'dag/vim-fish', {'for': 'fish'}
 Plug 'Glench/Vim-Jinja2-Syntax', {'for': ['py', 'jinja', 'jinja2', 'html']}
+Plug 'cespare/vim-toml', {'for': 'toml'}
+Plug 'google/vim-jsonnet', {'for': 'jsonnet'}
 
 " Stylistic
 Plug 'jacoborus/tender.vim'
@@ -44,8 +47,6 @@ Plug 'mhinz/vim-startify'
 Plug 'szw/vim-tags' " ctags support
 Plug 'Valloric/YouCompleteMe' " Tab autocompletion
 Plug 'davidhalter/jedi-vim', {'for': 'py'} " Python jedi support
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 
 " Utility
 Plug 'scrooloose/nerdcommenter' " Comment code easily
@@ -146,6 +147,8 @@ let g:gitgutter_sign_modified_removed = '∙'
 
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
+let g:ale_linters = {'python': ['pyflakes', 'pycodestyle', 'pylint']}
+let g:ale_python_pylint_options = "-E --persistent no -j 0 --disable=C"
 
 let g:jedi#rename_command = ""
 let g:jedi#completions_enabled = 0
@@ -208,6 +211,8 @@ highlight EOLWS ctermbg=blue guibg=#AAD7E6
 
 " Configure Pandoc to not fold so much
 let g:pandoc#folding#level = 4
+
+let g:startify_change_to_dir = 0
 
 " Convention for me is to map <Leader>c to whatever the related
 " compile function is in the langauge. This occurs in the ftplugin
