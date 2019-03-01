@@ -7,10 +7,10 @@ call plug#begin('~/.vim/plugged')
 " Search, File Directories...
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim' " Fuzzy finder search
-Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-unimpaired'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'francoiscabrol/ranger.vim'
+Plug 'scrooloose/nerdtree', {'on':  'NERDTreeToggle'}
 
 " Buffer plugins
 Plug 'rbgrouleff/bclose.vim' " Close buffers without closing window
@@ -30,7 +30,7 @@ Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'vim-scripts/SQLComplete.vim', {'for': 'sql'}
 Plug 'rust-lang/rust.vim', {'for': 'rs'}
 Plug 'racer-rust/vim-racer', {'for': 'rs'}
-Plug 'vim-scripts/indentpython.vim', {'for': 'py'}
+Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'dag/vim-fish', {'for': 'fish'}
 Plug 'Glench/Vim-Jinja2-Syntax', {'for': ['py', 'jinja', 'jinja2', 'html']}
 Plug 'cespare/vim-toml', {'for': 'toml'}
@@ -44,9 +44,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-startify'
 
 " Auto completion and snippets
-Plug 'szw/vim-tags' " ctags support
 Plug 'Valloric/YouCompleteMe' " Tab autocompletion
 Plug 'davidhalter/jedi-vim', {'for': 'py'} " Python jedi support
+Plug 'Valloric/YouCompleteMe'
 
 " Utility
 Plug 'scrooloose/nerdcommenter' " Comment code easily
@@ -125,33 +125,25 @@ if (has("termguicolors"))
 endif
 colorscheme tender
 
-let NERDTreeIgnore = [
-      \'\.pyc$',
-      \'\.aux$',
-      \'\.bbl$',
-      \'\.blg$',
-      \'\.out$',
-      \'\.fls$',
-      \'\.fdb_latexmk$',
-      \'\.synctex\.gz$'
-      \]
+" Ranger hotkey
+let g:ranger_map_keys = 0
+map <leader>r :RangerWorkingDirectory<CR>
+map <C-n> :NERDTreeToggle<CR>
 
-" YCM Config
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_semantic_triggers = { 'python': [ 're!\w{2}' ] }
 
 " GitGutter styling to use · instead of +/-
 let g:gitgutter_sign_added = '∙'
 let g:gitgutter_sign_modified = '∙'
 let g:gitgutter_sign_removed = '∙'
 let g:gitgutter_sign_modified_removed = '∙'
+let g:startify_change_to_dir = 0
 
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
 let g:ale_linters = {'python': ['pyflakes', 'pycodestyle', 'pylint']}
 let g:ale_python_pylint_options = "-E --persistent no -j 0 --disable=C"
-
-let g:jedi#rename_command = ""
-let g:jedi#completions_enabled = 0
 
 " Set preview/scratch off
 set completeopt=menu
@@ -221,15 +213,6 @@ let g:startify_change_to_dir = 0
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd FileType gitcommit setlocal spell
 
-" Auto open nerdtree and close when its the only thing left
-" autocmd vimenter * NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-nnoremap <C-N> :NERDTreeToggle<CR>
-
-" Start vim with file focused instead of nerdtree
-autocmd VimEnter * wincmd p
-autocmd VimEnter * if (line('$') == 1 && getline(1) == '') | wincmd p | endif
-
 " latex
 let g:vimtex_view_method = "zathura"
 let g:vimtex_compiler_latexmk = {
@@ -246,19 +229,6 @@ let g:vimtex_compiler_latexmk = {
         \   '-interaction=nonstopmode',
         \   '-xelatex'
         \ ]}
-
-" Disable YCM for C/C++ for Grappa project
-let g:ycm_filetype_blacklist = {
-      \ 'tagbar' : 1,
-      \ 'qf' : 1,
-      \ 'notes' : 1,
-      \ 'markdown' : 1,
-      \ 'unite' : 1,
-      \ 'text' : 1,
-      \ 'vimwiki' : 1,
-      \ 'pandoc' : 1,
-      \ 'infolog' : 1,
-      \ 'mail' : 1}
 
 " Save file when focus is lost
 autocmd BufLeave,FocusLost * wall
