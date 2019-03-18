@@ -1,0 +1,21 @@
+{
+    "workbench.colorTheme": "Monokai",
+    "editor.minimap.enabled": false,
+    "editor.fontFamily": "'Fira Code'",
+    "editor.fontLigatures": true,
+    "editor.fontWeight": 400,
+    "keyboard.dispatch": "keyCode",
+    "window.zoomLevel": 0,
+    "vim.leader": ",",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "n"],
+            "commands": ["workbench.action.toggleSidebarVisibility"]
+        }
+    ],
+    "rust.rustup": {
+        "toolchain": "nightly-x86_64-unknown-linux-gnu"
+    },
+    "rust.mode": "legacy",
+    "editor.wordWrapColumn": 120
+}

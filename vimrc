@@ -35,6 +35,7 @@ Plug 'dag/vim-fish', {'for': 'fish'}
 Plug 'Glench/Vim-Jinja2-Syntax', {'for': ['py', 'jinja', 'jinja2', 'html']}
 Plug 'cespare/vim-toml', {'for': 'toml'}
 Plug 'google/vim-jsonnet', {'for': 'jsonnet'}
+Plug 'neovimhaskell/haskell-vim', {'for': 'hs'}
 
 " Stylistic
 Plug 'jacoborus/tender.vim'
@@ -299,3 +300,20 @@ endfunction
 
 autocmd FileType latex setlocal spell
 autocmd BufRead,BufNewFile *.tex setlocal spell
+
+" Handle haskell linting, don't use GHC
+" https://github.com/w0rp/ale/issues/1359
+function CheckIfFileExists(filename)
+  if filereadable(a:filename)
+    return 1
+  endif
+
+  return 0
+endfunction
+
+" Disable GHC linter if in a Haskell Stack project
+if (CheckIfFileExists("./stack.yaml") == 1)
+  let g:ale_linters = {
+  \   'haskell': ['stack-build']
+  \}
+endif
