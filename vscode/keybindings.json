@@ -59,5 +59,33 @@
     {
         "key": "ctrl+9",
         "command": "workbench.action.openEditorAtIndex9"
+    },
+    {
+        "key": "ctrl+tab",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "ctrl+shift+tab",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "tab",
+        "command": "selectNextQuickFix",
+        "when": "editorFocus && quickFixWidgetVisible"
+    },
+    {
+        "key": "shift+tab",
+        "command": "selectPrevQuickFix",
+        "when": "editorFocus && quickFixWidgetVisible"
+    },
+        {
+        "key": "tab",
+        "command": "selectNextSuggestion",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    },
+        {
+        "key": "shift+tab",
+        "command": "selectPrevSuggestion",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
     }
 ]

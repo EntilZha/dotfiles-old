@@ -3,7 +3,7 @@
     "editor.minimap.enabled": false,
     "editor.fontFamily": "'Fira Code'",
     "editor.fontLigatures": true,
-    "editor.fontWeight": 400,
+    "editor.fontWeight": "400",
     "keyboard.dispatch": "keyCode",
     "window.zoomLevel": 0,
     "vim.leader": ",",
@@ -11,11 +11,50 @@
         {
             "before": ["<leader>", "n"],
             "commands": ["workbench.action.toggleSidebarVisibility"]
+        },
+        {
+            "before": ["<leader>", "g"],
+            "commands": ["editor.action.revealDefinition"]
+        },
+        {
+            "before": ["<leader>", "f"],
+            "commands": ["workbench.action.quickOpen"]
+        },
+        {
+            "before": ["<leader>", "2"],
+            "commands": ["workbench.action.closeActiveEditor"]
+        },
+        {
+            "before": ["<leader>", "3"],
+            "commands": ["workbench.action.nextEditor"]
+        },
+        {
+            "before": ["<leader>", "1"],
+            "commands": ["workbench.action.previousEditor"]
+        },
+        {
+            "before": ["<leader>", "e"],
+            "commands": ["workbench.actions.view.problems"]
         }
     ],
     "rust.rustup": {
         "toolchain": "nightly-x86_64-unknown-linux-gnu"
     },
     "rust.mode": "legacy",
-    "editor.wordWrapColumn": 120
+    "editor.wordWrapColumn": 120,
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors.normal": ["#2899d9", "#3a404c"],
+    "vim.statusBarColors.insert": "#BF616A",
+    "vim.statusBarColors.visual": "#e4961f",
+    "vim.statusBarColors.visualline": "#e4961f",
+    "vim.statusBarColors.visualblock": "#A3BE8C",
+    "vim.statusBarColors.replace": "#D08770",
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#2899d9",
+        "statusBar.noFolderBackground": "#2899d9",
+        "statusBar.debuggingBackground": "#2899d9",
+        "statusBar.foreground": "#3a404c"
+    },
+    "window.titleBarStyle": "custom",
+    "workbench.iconTheme": "material-icon-theme"
 }
