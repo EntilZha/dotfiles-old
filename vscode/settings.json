@@ -33,8 +33,20 @@
             "commands": ["workbench.action.previousEditor"]
         },
         {
+            "before": ["<leader>", "n"],
+            "commands": ["workbench.action.toggleSidebarVisibility"]
+        },
+        {
             "before": ["<leader>", "e"],
             "commands": ["workbench.actions.view.problems"]
+        },
+        {
+            "before": ["j"],
+            "after": ["g", "j"]
+        },
+        {
+            "before": ["k"],
+            "after": ["g", "k"]
         }
     ],
     "rust.rustup": {
@@ -56,5 +68,15 @@
         "statusBar.foreground": "#3a404c"
     },
     "window.titleBarStyle": "custom",
-    "workbench.iconTheme": "material-icon-theme"
+    "workbench.iconTheme": "material-icon-theme",
+    "python.linting.pylintArgs": [
+        "--disable",
+        "C",
+        "-E",
+        "--persistent",
+        "no"
+    ],
+    "vim.easymotion": true,
+    "latex-workshop.view.pdf.viewer": "external",
+    "latex-workshop.view.pdf.external.command": {"command": "zathura", "args": ["%PDF%"]}
 }
