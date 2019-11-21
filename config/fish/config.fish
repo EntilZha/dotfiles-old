@@ -15,7 +15,7 @@ function fish_prompt
   echo (pwd)
   set_color yellow
   echo -n "\$ "
-  sec_color normal
+  set_color normal
 end
 
 # GLOBALS
