@@ -8,6 +8,12 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig
+import XMonad.Actions.NoBorders
+import XMonad.Layout.NoBorders (noBorders, smartBorders)
+import XMonad.Layout.Fullscreen (fullscreenFull, fullscreenSupport)
+import XMonad.Layout.Grid (Grid(..))
+import XMonad.Layout.TwoPane (TwoPane(..))
+import XMonad.Layout.Tabbed (simpleTabbed)
 
 
 solarized :: Map String String
@@ -29,20 +35,38 @@ solarized = Map.fromList [
     ("cyan",     "#2aa198"),
     ("green", "#859900")]
 
+myManageHook = composeAll
+  [ className =? "discord" --> doShift "4:msg"
+  , className =? "slack" --> doShift "4:msg"
+  , className =? "slack-dpi" --> doShift "4:msg"
+  , className =? "code" --> doShift "2:code"
+  , className =? "spotify" --> doShift "5:music"
+  , manageDocks
+  ]
+
+myLayoutHook =
+  avoidStruts . smartBorders $ -- layouts begin below
+  Tall 1 (3/100) (1/2)
+  ||| Mirror (Tall 1 (3/100) (1/2))
+  ||| Grid
+  ||| noBorders Full
+  ||| simpleTabbed
+  -- ...
+
 main = do
   xmproc <- spawnPipe "xmobar"
   xmonad $ def
-    { terminal = "gnome-terminal"
+    { terminal = "kitty"
     , modMask = mod4Mask
-    , manageHook = manageDocks <+> manageHook def
-    , layoutHook = avoidStruts $ layoutHook def
+    , manageHook = myManageHook <+> manageHook def
+    , layoutHook = myLayoutHook
     , handleEventHook = handleEventHook def <+> docksEventHook
     , logHook = dynamicLogWithPP xmobarPP
       { ppOutput = hPutStrLn xmproc
       , ppCurrent = xmobarColor (Map.findWithDefault "" "orange" solarized) "" . wrap "[" "]"
       , ppUrgent = xmobarColor (Map.findWithDefault "" "yellow" solarized) "" . wrap "*" "*" . xmobarStrip
-      , ppSep = "  ——  "
-      , ppTitle = xmobarColor (Map.findWithDefault "" "blue" solarized) ""
+      , ppSep = " —— "
+      , ppTitle = xmobarColor (Map.findWithDefault "" "blue" solarized) "" . shorten 50
       }
     , startupHook = setWMName "LG3D"
     , focusedBorderColor = "#236ea3"
@@ -52,7 +76,13 @@ main = do
 
 myKeys =
     [ (mask ++ "M-" ++ [key], screenWorkspace scr >>= flip whenJust (windows . action))
-         | (key, scr)  <- zip "wer" [1,0,2] -- was [0..] *** change to match your screen order ***
+         | (key, scr)  <- zip "wer" [2,0,1] -- was [0..] *** change to match your screen order ***
          , (action, mask) <- [ (W.view, "") , (W.shift, "S-")]
+    ] ++ [
+      ("M-p", spawn "rofi -modi window,drun,ssh,run,combi -show-icons -show combi -terminal kitty -sidebar-mode"),
+      ("M-S-l", spawn "xscreensaver-command -lock"),
+      ("M-b", sendMessage ToggleStruts),
+      ("M-S-b", withFocused toggleBorder)
     ]
+
 
