@@ -14,6 +14,8 @@ import XMonad.Layout.Fullscreen (fullscreenFull, fullscreenSupport)
 import XMonad.Layout.Grid (Grid(..))
 import XMonad.Layout.TwoPane (TwoPane(..))
 import XMonad.Layout.Tabbed (simpleTabbed)
+import XMonad.Hooks.DynamicProperty
+import XMonad.Layout.PerWorkspace (onWorkspace, onWorkspaces)
 
 
 solarized :: Map String String
@@ -35,23 +37,36 @@ solarized = Map.fromList [
     ("cyan",     "#2aa198"),
     ("green", "#859900")]
 
+
+spotifyHook = composeAll
+  [ className =? "spotify" --> doShift "6:music"
+  , className =? "Spotify" --> doShift "6:music"
+  ]
+
 myManageHook = composeAll
-  [ className =? "discord" --> doShift "4:msg"
-  , className =? "slack" --> doShift "4:msg"
-  , className =? "slack-dpi" --> doShift "4:msg"
+  [ className =? "discord" --> doShift "5:msg"
+  , className =? "Slack" --> doShift "5:msg"
+  , resource =? "slack" --> doShift "5:msg"
   , className =? "code" --> doShift "2:code"
-  , className =? "spotify" --> doShift "5:music"
   , manageDocks
   ]
 
-myLayoutHook =
-  avoidStruts . smartBorders $ -- layouts begin below
+horizontalLayout =
   Tall 1 (3/100) (1/2)
   ||| Mirror (Tall 1 (3/100) (1/2))
-  ||| Grid
   ||| noBorders Full
-  ||| simpleTabbed
-  -- ...
+  ||| Grid
+
+verticalLayout =
+  Grid
+  ||| Tall 1 (3/100) (1/2)
+  ||| Mirror (Tall 1 (3/100) (1/2))
+  ||| noBorders Full
+
+myLayoutHook =
+  avoidStruts . smartBorders $ -- layouts begin below
+  onWorkspaces ["5:msg", "1:term"] verticalLayout $
+  horizontalLayout
 
 main = do
   xmproc <- spawnPipe "xmobar"
@@ -60,7 +75,7 @@ main = do
     , modMask = mod4Mask
     , manageHook = myManageHook <+> manageHook def
     , layoutHook = myLayoutHook
-    , handleEventHook = handleEventHook def <+> docksEventHook
+    , handleEventHook = handleEventHook def <+> docksEventHook <+> dynamicPropertyChange "WM_NAME" spotifyHook
     , logHook = dynamicLogWithPP xmobarPP
       { ppOutput = hPutStrLn xmproc
       , ppCurrent = xmobarColor (Map.findWithDefault "" "orange" solarized) "" . wrap "[" "]"
@@ -70,7 +85,7 @@ main = do
       }
     , startupHook = setWMName "LG3D"
     , focusedBorderColor = "#236ea3"
-    , workspaces = ["1:term", "2:code", "3:web", "4:msg", "5:music", "6", "7", "8", "9"]
+    , workspaces = ["1:term", "2:code", "3:web", "4", "5:msg", "6:music", "7", "8", "9"]
     } `additionalKeysP` myKeys
 
 
@@ -79,7 +94,8 @@ myKeys =
          | (key, scr)  <- zip "wer" [2,0,1] -- was [0..] *** change to match your screen order ***
          , (action, mask) <- [ (W.view, "") , (W.shift, "S-")]
     ] ++ [
-      ("M-p", spawn "rofi -modi window,drun,ssh,run,combi -show-icons -show combi -terminal kitty -sidebar-mode"),
+      ("M-p", spawn "albert show"),
+      ("M-S-p", spawn "rofi -modi drun,run -show-icons -show drun -terminal kitty -sidebar-mode"),
       ("M-S-l", spawn "xscreensaver-command -lock"),
       ("M-b", sendMessage ToggleStruts),
       ("M-S-b", withFocused toggleBorder)

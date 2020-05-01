@@ -1,7 +1,7 @@
 Config {
 
    -- appearance
-     font =         "xft:Bitstream Vera Sans Mono:size=9:bold:antialias=true"
+     font =         "xft:Fira Mono:size=7.5:bold:antialias=true"
    , bgColor =      "#151a1c"
    , fgColor =      "#828282"
    , position =     Top
@@ -11,7 +11,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = " %StdinReader% | %default:Master% | %multicpu% | %coretemp% | %memory% | %mobargpustat% | <icon=/home/entilzha/.xmobar/ping.xbm/> %mobarping.py% | %dynnetwork% }{ %date% "
+   , template = " %StdinReader% | %mobaralsa.py% | %multicpu% | %memory% | %mobargpustat% | <icon=/home/entilzha/.xmobar/ping.xbm/> %mobarping.py% | %dynnetwork% }{ %date%            "
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -72,13 +72,12 @@ Config {
                              , "--high"     , "darkred"
                              ] 10
 
-        , Run Volume "default" "Master" ["--template", "<icon=/home/entilzha/.xmobar/vol.xbm/> <volume>%"] 10
-
         -- time and date indicator
         --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
         , Run Date           "<fc=#ABABAB>%F (%a) %r</fc>" "date" 10
         , Run Com "mobargpustat" [] "" 20
         , Run Com "mobarping.py" [] "" 20
+        , Run Com "mobaralsa.py" [] "" 20
         , Run StdinReader
         ]
 }
