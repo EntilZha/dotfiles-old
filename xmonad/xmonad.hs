@@ -9,13 +9,18 @@ import XMonad.Util.Run
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig
 import XMonad.Actions.NoBorders
-import XMonad.Layout.NoBorders (noBorders, smartBorders)
+import XMonad.Layout.NoBorders
 import XMonad.Layout.Fullscreen (fullscreenFull, fullscreenSupport)
 import XMonad.Layout.Grid (Grid(..))
 import XMonad.Layout.TwoPane (TwoPane(..))
 import XMonad.Layout.Tabbed (simpleTabbed)
 import XMonad.Hooks.DynamicProperty
 import XMonad.Layout.PerWorkspace (onWorkspace, onWorkspaces)
+
+data AllFloats = AllFloats deriving (Read, Show)
+
+instance SetsAmbiguous AllFloats where
+    hiddens _ wset _ _ _ = Map.keys $ W.floating wset
 
 
 solarized :: Map String String
@@ -64,8 +69,9 @@ verticalLayout =
   ||| noBorders Full
 
 myLayoutHook =
+  lessBorders AllFloats $
   avoidStruts . smartBorders $ -- layouts begin below
-  onWorkspaces ["5:msg", "1:term"] verticalLayout $
+  onWorkspaces ["5:msg"] verticalLayout $
   horizontalLayout
 
 main = do
