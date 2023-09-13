@@ -1,0 +1,51 @@
+# Don't print a new line at the start of the prompt
+add_newline = false
+
+format = """\
+    ${custom.tab}\
+     $hostname\
+    $time\
+    $directory\
+    $git_branch\
+    $git_commit\
+    $git_state\
+    $git_status\
+    $python\
+    $conda\
+    $cmd_duration\
+    $line_break\
+    $character\
+"""
+
+
+[hostname]
+ssh_only = false
+style = "fg:red"
+format = "[$hostname]($style) "
+trim_at = ""
+
+[username]
+style_root = "fg:green"
+style_user = "fg:green"
+show_always = false
+
+[directory]
+style = "fg:green"
+truncate_to_repo = false
+format = "in [$path]($style)[$read_only]($read_only_style) "
+truncation_length = 6
+
+[time]
+disabled = false
+style = "fg:purple"
+use_12hr = true
+
+[custom]
+
+[custom.tab]
+description = "The current tab in the tab terminal multiplexer"
+command = "tab --starship"
+when = "tab --starship"
+shell = ["sh"]
+format = "[$output]($style) "
+style = "bold blue"
